@@ -35,6 +35,7 @@ static qboolean     GPV_Parse               ( CGPValue *gpv, char **dataPtr, CTe
 static void         GPV_AddValue            ( CGPValue *gpv, char *newValue, CTextPool **textPool );
 
 static char         *AllocText              ( CTextPool *textPool, char *text, qboolean addNULL, CTextPool **poolPtr );
+static CTextPool    *AllocTextPool          ( int mSize );
 static char         *GetToken               ( char **text, qboolean allowLineBreaks, qboolean readUntilEOL );
 static void         SortObject              ( void *object, void **unsortedList, void **sortedList, void **lastObject );
 
@@ -46,12 +47,10 @@ static char         token[MAX_TOKEN_SIZE];
 GP_Parse
 
 Fully parse a GP2 data buffer.
-The cleanFirst and writeable variables are deprecated and not used anywhere,
-but are kept for the sake of compatibility.
 ==================
 */
 
-TGenericParser2 GP_Parse(char **dataPtr, qboolean cleanFirst, qboolean writeable)
+TGenericParser2 GP_Parse(char **dataPtr)
 {
     CGenericParser2     *topLevel;
     CTextPool           *topPool;
@@ -59,14 +58,9 @@ TGenericParser2 GP_Parse(char **dataPtr, qboolean cleanFirst, qboolean writeable
     // Allocate and zero initialize the main parser structure.
     topLevel = calloc(1, sizeof(CGenericParser2));
 
-    // Allocate and zero initialize the text pool.
-    topLevel->mTextPool = calloc(1, sizeof(CTextPool));
+    // Initialize the text pool.
+    topLevel->mTextPool = AllocTextPool(TOPPOOL_SIZE);
     topPool = topLevel->mTextPool;
-
-    // Allocate memory for the actual pool.
-    topPool->mSize = TOPPOOL_SIZE;
-    topPool->mPool = Z_TagMalloc(topPool->mSize, TAG_TEXTPOOL);
-    Com_Memset(topPool->mPool, 0, topPool->mSize);
 
     // Start parsing groups.
     topLevel->mTopLevel.mBase.mName = "Top Level";
@@ -108,8 +102,7 @@ void GP_Clean(TGenericParser2 GP2)
     }
 
     // Free all allocated subgroups.
-    while(topLevel->mSubGroups)
-    {
+    while(topLevel->mSubGroups){
         topLevel->mCurrentSubGroup = topLevel->mSubGroups->mBase.mNext;
         free(topLevel->mSubGroups);
         topLevel->mSubGroups = topLevel->mCurrentSubGroup;
@@ -285,7 +278,7 @@ static void GPV_AddValue(CGPValue *gpv, char *newValue, CTextPool **textPool)
 
     if(gpv->mList == NULL){
         gpv->mList = calloc(1, sizeof(CGPValue));
-        gpv->mList->mBase.mName == newValue;
+        gpv->mList->mBase.mName = newValue;
         gpv->mList->mBase.mInOrderNext = gpv->mList;
     }else{
         ((CGPValue *)gpv->mBase.mInOrderNext)->mBase.mNext = calloc(1, sizeof(CGPValue));
@@ -309,13 +302,13 @@ static char *AllocText(CTextPool *textPool, char *text, qboolean addNULL, CTextP
     {
         // Extra 1 to put a null on the end.
         if(poolPtr){
-            (*poolPtr)->mNext = calloc(textPool->mSize, sizeof(CTextPool));
+            (*poolPtr)->mNext = AllocTextPool(textPool->mSize);
             *poolPtr = (*poolPtr)->mNext;
 
             return AllocText((*poolPtr), text, addNULL, NULL);
         }
 
-        return 0;
+        return NULL;
     }
 
     strncpy(textPool->mPool + textPool->mUsed, text, textPool->mSize - textPool->mUsed); // FIXME BOE review for truncation.
@@ -323,6 +316,30 @@ static char *AllocText(CTextPool *textPool, char *text, qboolean addNULL, CTextP
     textPool->mPool[textPool->mUsed] = 0;
 
     return textPool->mPool + textPool->mUsed - length;
+}
+
+/*
+==================
+AllocTextPool
+
+Allocates a new text pool for use.
+==================
+*/
+
+static CTextPool *AllocTextPool(int mSize)
+{
+    CTextPool *mTextPool;
+
+    // Allocate and zero initialize the text pool.
+    mTextPool = calloc(1, sizeof(CTextPool));
+
+    // Allocate memory for the actual pool.
+    mTextPool->mSize = mSize;
+    mTextPool->mPool = Z_TagMalloc(mTextPool->mSize, TAG_TEXTPOOL);
+    Com_Memset(mTextPool->mPool, 0, mTextPool->mSize);
+
+    // Return pointer to this newly initialized text pool.
+    return mTextPool;
 }
 
 /*
@@ -499,4 +516,77 @@ static void SortObject(
     }
 
     *lastObject = object;
+}
+
+/*
+==================
+GP_GetBaseParseGroup
+
+Returns the base parse group (the top level).
+==================
+*/
+
+TGPGroup GP_GetBaseParseGroup(TGenericParser2 GP2)
+{
+    if(!GP2){
+        return NULL;
+    }
+
+    return &((CGenericParser2 *)GP2)->mTopLevel;
+}
+
+// CGPGroup (void *) routines
+
+/*
+==================
+GPG_GetName
+
+For a valid group, this routine copies the name of the current group to value and returns qtrue.
+Otherwise, it sets value to NULL and returns qfalse.
+==================
+*/
+
+qboolean GPG_GetName(TGPGroup GPG, char *value, int destSize)
+{
+    if(!GPG){
+        value[0] = 0;
+        return qfalse;
+    }
+
+    strncpy(value, ((CGPGroup *)GPG)->mBase.mName, destSize);
+    return qtrue;
+}
+
+/*
+==================
+GPG_GetNext
+
+Returns the next group, unordered.
+==================
+*/
+
+TGPGroup GPG_GetNext(TGPGroup GPG)
+{
+    if (!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mBase.mNext;
+}
+
+/*
+==================
+GPG_GetSubGroups
+
+Returns the first sub group from a group.
+==================
+*/
+
+TGPGroup GPG_GetSubGroups (TGPGroup GPG)
+{
+    if (!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mSubGroups;
 }

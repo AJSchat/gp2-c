@@ -75,14 +75,14 @@ typedef struct {
 
 // CGenericParser2 (void *) routines.
 //=============================================
-TGenericParser2     GP_Parse                ( char **dataPtr, qboolean cleanFirst, qboolean writeable );
+TGenericParser2     GP_Parse                ( char **dataPtr );
 void                GP_Clean                ( TGenericParser2 GP2 );
 void                GP_Delete               ( TGenericParser2 *GP2 );
 TGPGroup            GP_GetBaseParseGroup    ( TGenericParser2 GP2 );
 
 // CGPGroup (void *) routines.
 //=============================================
-qboolean            GPG_GetName             ( TGPGroup GPG, char *value );
+qboolean            GPG_GetName             ( TGPGroup GPG, char *value, int destSize );
 TGPGroup            GPG_GetNext             ( TGPGroup GPG );
 TGPGroup            GPG_GetInOrderNext      ( TGPGroup GPG );
 TGPGroup            GPG_GetInOrderPrevious  ( TGPGroup GPG );
