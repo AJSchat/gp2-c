@@ -82,7 +82,7 @@ TGPGroup            GP_GetBaseParseGroup    ( TGenericParser2 GP2 );
 
 // CGPGroup (void *) routines.
 //=============================================
-qboolean            GPG_GetName             ( TGPGroup GPG, char *value, int destSize );
+qboolean            GPG_GetName             ( TGPGroup GPG, char *dest, int destSize );
 TGPGroup            GPG_GetNext             ( TGPGroup GPG );
 TGPGroup            GPG_GetInOrderNext      ( TGPGroup GPG );
 TGPGroup            GPG_GetInOrderPrevious  ( TGPGroup GPG );
@@ -92,7 +92,7 @@ TGPGroup            GPG_GetSubGroups        ( TGPGroup GPG );
 TGPGroup            GPG_GetInOrderSubGroups ( TGPGroup GPG );
 TGPGroup            GPG_FindSubGroup        ( TGPGroup GPG, const char *name );
 TGPValue            GPG_FindPair            ( TGPGroup GPG, const char *key );
-qboolean            GPG_FindPairValue       ( TGPGroup GPG, const char *key, const char *defaultVal, char *value );
+void                GPG_FindPairValue       ( TGPGroup GPG, const char *key, const char *defaultVal, char *dest, int destSize );
 
 // CGPValue (void *) routines.
 //=============================================

@@ -546,14 +546,14 @@ Otherwise, it sets value to NULL and returns qfalse.
 ==================
 */
 
-qboolean GPG_GetName(TGPGroup GPG, char *value, int destSize)
+qboolean GPG_GetName(TGPGroup GPG, char *dest, int destSize)
 {
     if(!GPG){
-        value[0] = 0;
+        dest[0] = 0;
         return qfalse;
     }
 
-    strncpy(value, ((CGPGroup *)GPG)->mBase.mName, destSize);
+    strncpy(dest, ((CGPGroup *)GPG)->mBase.mName, destSize);
     return qtrue;
 }
 
@@ -561,17 +561,85 @@ qboolean GPG_GetName(TGPGroup GPG, char *value, int destSize)
 ==================
 GPG_GetNext
 
-Returns the next group, unordered.
+Returns the next group.
 ==================
 */
 
 TGPGroup GPG_GetNext(TGPGroup GPG)
 {
-    if (!GPG){
+    if(!GPG){
         return NULL;
     }
 
     return ((CGPGroup *)GPG)->mBase.mNext;
+}
+
+/*
+==================
+GPG_GetInOrderNext
+
+Returns the next ordered group.
+==================
+*/
+
+TGPGroup GPG_GetInOrderNext(TGPGroup GPG)
+{
+    if(!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mBase.mInOrderNext;
+}
+
+/*
+==================
+GPG_GetInOrderNext
+
+Returns the previous ordered group.
+==================
+*/
+
+TGPGroup GPG_GetInOrderPrevious(TGPGroup GPG)
+{
+    if(!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mBase.mInOrderPrevious;
+}
+
+/*
+==================
+GPG_GetPairs
+
+Returns all pairs from this group.
+==================
+*/
+
+TGPGroup GPG_GetPairs(TGPGroup GPG)
+{
+    if(!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mPairs;
+}
+
+/*
+==================
+GPG_GetPairs
+
+Returns all ordered pairs from this group.
+==================
+*/
+
+TGPGroup GPG_GetInOrderPairs(TGPGroup GPG)
+{
+    if(!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mInOrderPairs;
 }
 
 /*
@@ -582,11 +650,143 @@ Returns the first sub group from a group.
 ==================
 */
 
-TGPGroup GPG_GetSubGroups (TGPGroup GPG)
+TGPGroup GPG_GetSubGroups(TGPGroup GPG)
 {
-    if (!GPG){
+    if(!GPG){
         return NULL;
     }
 
     return ((CGPGroup *)GPG)->mSubGroups;
+}
+
+/*
+==================
+GPG_GetInOrderSubGroups
+
+Returns all ordered subgroups.
+==================
+*/
+
+TGPGroup GPG_GetInOrderSubGroups(TGPGroup GPG)
+{
+    if(!GPG){
+        return NULL;
+    }
+
+    return ((CGPGroup *)GPG)->mInOrderSubGroups;
+}
+
+/*
+==================
+GPG_FindSubGroup
+
+Finds a subgroup based on name and returns it.
+Returns NULL upon failure.
+==================
+*/
+
+TGPGroup GPG_FindSubGroup(TGPGroup GPG, const char *name)
+{
+    CGPGroup    *group;
+
+    if(!GPG){
+        return NULL;
+    }
+
+    // Get subgroups.
+    group = ((CGPGroup *)GPG)->mSubGroups;
+
+    // Iterate through them, find desired value.
+    while(group){
+        if(Q_stricmp(name, group->mBase.mName) == 0){
+            return(group);
+        }
+
+        group = (CGPGroup *)group->mBase.mNext;
+    }
+
+    // Not found, return NULL.
+    return(NULL);
+}
+
+/*
+==================
+GPG_FindPair
+
+This function will search for the pair with the specified key name.
+Multiple keys may be searched if you specify "||" in-between each key name
+in the string. The first key to be found (from left to right) will be returned.
+Returns NULL upon failure.
+==================
+*/
+
+TGPValue GPG_FindPair(TGPGroup GPG, const char *key)
+{
+    CGPGroup        *group;
+    CGPValue        *pair;
+    size_t          length;
+    const char      *pos, *separator, *next;
+
+    if(!GPG){
+        return NULL;
+    }
+
+    group = (CGPGroup *)GPG;
+    pos = key;
+    while(pos[0]){
+        separator = strstr(pos, "||");
+        if(separator){
+            length = separator - pos;
+            next = separator + 2;
+        }else{
+            length = strlen(pos);
+            next = pos + length;
+        }
+
+        pair = group->mPairs;
+        while(pair){
+            if (strlen(pair->mBase.mName) == length &&
+                Q_stricmpn(pair->mBase.mName, pos, length) == 0)
+            {
+                return pair;
+            }
+
+            pair = pair->mBase.mNext;
+        }
+
+        pos = next;
+    }
+
+    return NULL;
+}
+
+/*
+==================
+GPG_FindPairValue
+
+Finds the value that belongs to a key and copies it into the destination.
+Upon error, the default value is copied to the destination instead.
+==================
+*/
+
+void GPG_FindPairValue(TGPGroup GPG, const char *key, const char *defaultVal, char *dest, int destSize)
+{
+    CGPValue        *pair;
+    const char      *newVal;
+
+    // Find pair value, if available.
+    if(!GPG){
+        newVal = defaultVal;
+    }else{
+        pair = GPG_FindPair(GPG, key);
+
+        if(pair && pair->mList){
+            newVal = pair->mList->mBase.mName;
+        }else{
+            newVal = defaultVal;
+        }
+    }
+
+    // Copy result.
+    strncpy(dest, newVal, destSize);
 }
