@@ -347,7 +347,7 @@ static CTextPool *AllocTextPool(int mSize)
 GetToken
 
 Parses token from the text buffer. The result is stored in the local
-"token" char buffer. A pointer pointing to this buffer is returned.
+"token" char buffer. A pointer to this buffer is returned.
 ==================
 */
 
@@ -535,14 +535,14 @@ TGPGroup GP_GetBaseParseGroup(TGenericParser2 GP2)
     return &((CGenericParser2 *)GP2)->mTopLevel;
 }
 
-// CGPGroup (void *) routines
+// CGPGroup (void *) routines.
 
 /*
 ==================
 GPG_GetName
 
-For a valid group, this routine copies the name of the current group to value and returns qtrue.
-Otherwise, it sets value to NULL and returns qfalse.
+For a valid group, this routine copies the name of the current group to dest and returns qtrue.
+Otherwise, it sets dest to NULL and returns qfalse.
 ==================
 */
 
@@ -789,4 +789,134 @@ void GPG_FindPairValue(TGPGroup GPG, const char *key, const char *defaultVal, ch
 
     // Copy result.
     strncpy(dest, newVal, destSize);
+}
+
+// CGPValue (void *) routines.
+
+/*
+==================
+GPV_GetName
+
+For a valid value, this routine copies the name of the current value to dest and returns qtrue.
+Otherwise, it sets dest to NULL and returns qfalse.
+==================
+*/
+
+qboolean GPV_GetName(TGPValue GPV, char *dest, int destSize)
+{
+    if(!GPV){
+        dest[0] = 0;
+        return qfalse;
+    }
+
+    strncpy(dest, ((CGPValue *)GPV)->mBase.mName, destSize);
+    return qtrue;
+}
+
+/*
+==================
+GPV_GetNext
+
+Returns the next value.
+==================
+*/
+
+TGPValue GPV_GetNext(TGPValue GPV)
+{
+    if(!GPV){
+        return NULL;
+    }
+
+    return ((CGPValue *)GPV)->mBase.mNext;
+}
+
+/*
+==================
+GPV_GetInOrderNext
+
+Returns the next ordered value.
+==================
+*/
+
+TGPValue GPV_GetInOrderNext(TGPValue GPV)
+{
+    if(!GPV){
+        return NULL;
+    }
+
+    return ((CGPValue *)GPV)->mBase.mInOrderNext;
+}
+
+/*
+==================
+GPV_GetInOrderNext
+
+Returns the previous ordered value.
+==================
+*/
+
+TGPValue GPV_GetInOrderPrevious(TGPValue GPV)
+{
+    if(!GPV){
+        return NULL;
+    }
+
+    return ((CGPValue *)GPV)->mBase.mInOrderPrevious;
+}
+
+/*
+==================
+GPV_IsList
+
+Returns if the specified value contains a valid list.
+==================
+*/
+
+qboolean GPV_IsList(TGPValue GPV)
+{
+    if(!GPV){
+        return qfalse;
+    }
+
+    return ((CGPValue *)GPV)->mList && ((CGPValue *)GPV)->mList->mBase.mNext;
+}
+
+/*
+==================
+GPV_GetTopValue
+
+Returns the name of the top level, if present.
+==================
+*/
+
+qboolean GPV_GetTopValue(TGPValue GPV, char *dest, int destSize)
+{
+    if(!GPV){
+        dest[0] = 0;
+        return qfalse;
+    }
+
+    if(!((CGPValue *)GPV)->mList){
+        return qfalse;
+    }
+
+    strncpy(dest, ((CGPValue *)GPV)->mList->mBase.mName, destSize);
+    return qtrue;
+}
+
+/*
+==================
+GPV_GetList
+
+Returns the list of this value.
+==================
+*/
+
+TGPValue GPV_GetList(TGPValue GPV)
+{
+    if(!GPV){
+        return NULL;
+    }
+
+    return ((CGPValue *)GPV)->mList;
 }

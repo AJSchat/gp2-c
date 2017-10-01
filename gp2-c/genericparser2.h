@@ -96,12 +96,12 @@ void                GPG_FindPairValue       ( TGPGroup GPG, const char *key, con
 
 // CGPValue (void *) routines.
 //=============================================
-qboolean            GPV_GetName             ( TGPValue GPV, char *value );
+qboolean            GPV_GetName             ( TGPValue GPV, char *dest, int destSize );
 TGPValue            GPV_GetNext             ( TGPValue GPV );
 TGPValue            GPV_GetInOrderNext      ( TGPValue GPV );
 TGPValue            GPV_GetInOrderPrevious  ( TGPValue GPV );
 qboolean            GPV_IsList              ( TGPValue GPV );
-qboolean            GPV_GetTopValue         ( TGPValue GPV, char *value );
+qboolean            GPV_GetTopValue         ( TGPValue GPV, char *dest, int destSize );
 TGPValue            GPV_GetList             ( TGPValue GPV );
 
 #endif // __GP2_H
