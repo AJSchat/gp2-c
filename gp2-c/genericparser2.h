@@ -25,6 +25,7 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 #ifndef __GP2_H
 #define __GP2_H
 
+#define     TOP_LEVEL_NAME                  "Top Level"
 #define     TOPPOOL_SIZE                    10240
 #define     MAX_TOKEN_SIZE                  1024
 
@@ -51,7 +52,6 @@ struct CGPGroup {
     CGPGroup        *mSubGroups, *mInOrderSubGroups;
     CGPGroup        *mCurrentSubGroup;
     CGPGroup        *mParent;
-    qboolean        mWriteable;
 };
 
 struct CGPValue {
@@ -68,7 +68,6 @@ struct CTextPool {
 typedef struct {
     CGPGroup        mTopLevel;
     CTextPool       *mTextPool;
-    qboolean        mWriteable;
 } CGenericParser2;
 
 //=============================================

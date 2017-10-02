@@ -27,92 +27,23 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 #include "genericparser2.h"
 
 // Local function definitions.
-static qboolean     GPG_Parse               ( CGPGroup *group, char **dataPtr, CTextPool **textPool );
-static CGPGroup     *GPG_AddGroup           ( CGPGroup *parent, char *name, CTextPool **textPool );
-static CGPValue     *GPG_AddPair            ( CGPGroup *parent, char *name, char *value, CTextPool **textPool );
+static qboolean     GPG_Parse               ( CGPGroup *gpg, char **dataPtr, CTextPool **textPool );
+static CGPGroup     *GPG_AddGroup           ( CGPGroup *gpg, char *name, CTextPool **textPool );
+static CGPValue     *GPG_AddPair            ( CGPGroup *gpg, char *name, char *value, CTextPool **textPool );
+static void         GPG_Clean               ( CGPGroup *gpg );
 
 static qboolean     GPV_Parse               ( CGPValue *gpv, char **dataPtr, CTextPool **textPool );
 static void         GPV_AddValue            ( CGPValue *gpv, char *newValue, CTextPool **textPool );
+static void         GPV_Clean               ( CGPValue *gpv );
 
 static char         *AllocText              ( CTextPool *textPool, char *text, qboolean addNULL, CTextPool **poolPtr );
 static CTextPool    *AllocTextPool          ( int mSize );
+static void         CleanTextPool           ( CTextPool *pool );
 static char         *GetToken               ( char **text, qboolean allowLineBreaks, qboolean readUntilEOL );
 static void         SortObject              ( void *object, void **unsortedList, void **sortedList, void **lastObject );
 
 // Local variable definitions.
 static char         token[MAX_TOKEN_SIZE];
-
-/*
-==================
-GP_Parse
-
-Fully parse a GP2 data buffer.
-==================
-*/
-
-TGenericParser2 GP_Parse(char **dataPtr)
-{
-    CGenericParser2     *topLevel;
-    CTextPool           *topPool;
-
-    // Allocate and zero initialize the main parser structure.
-    topLevel = calloc(1, sizeof(CGenericParser2));
-
-    // Initialize the text pool.
-    topLevel->mTextPool = AllocTextPool(TOPPOOL_SIZE);
-    topPool = topLevel->mTextPool;
-
-    // Start parsing groups.
-    topLevel->mTopLevel.mBase.mName = "Top Level";
-    if(GPG_Parse(&topLevel->mTopLevel, dataPtr, &topPool)){
-         // Successful, return the end result.
-        return topLevel;
-    }
-
-    // Unsuccessful, clean up and return.
-    GP_Clean(topLevel);
-    return 0;
-}
-
-/*
-==================
-GP_Clean
-
-Cleans GP2 instance.
-==================
-*/
-
-void GP_Clean(TGenericParser2 GP2)
-{
-    CGenericParser2 *CGP2;
-    CGPGroup *topLevel;
-
-    if(!GP2){
-        return;
-    }
-
-    CGP2 = GP2;
-    topLevel = &CGP2->mTopLevel;
-
-    // Free all allocated pairs.
-    while(topLevel->mPairs){
-        topLevel->mCurrentPair = topLevel->mPairs->mBase.mNext;
-        free(topLevel->mPairs);
-        topLevel->mPairs = topLevel->mCurrentPair;
-    }
-
-    // Free all allocated subgroups.
-    while(topLevel->mSubGroups){
-        topLevel->mCurrentSubGroup = topLevel->mSubGroups->mBase.mNext;
-        free(topLevel->mSubGroups);
-        topLevel->mSubGroups = topLevel->mCurrentSubGroup;
-    }
-
-    topLevel->mPairs = topLevel->mInOrderPairs = topLevel->mCurrentPair = NULL;
-    topLevel->mSubGroups = topLevel->mInOrderSubGroups = topLevel->mCurrentSubGroup = NULL;
-    topLevel->mParent = NULL;
-    topLevel->mWriteable = qfalse;
-}
 
 /*
 ==================
@@ -122,7 +53,7 @@ Parse a GP2 group.
 ==================
 */
 
-static qboolean GPG_Parse(CGPGroup *group, char **dataPtr, CTextPool **textPool)
+static qboolean GPG_Parse(CGPGroup *gpg, char **dataPtr, CTextPool **textPool)
 {
     char        *token;
     char        lastToken[MAX_TOKEN_SIZE];
@@ -134,7 +65,7 @@ static qboolean GPG_Parse(CGPGroup *group, char **dataPtr, CTextPool **textPool)
 
         if(!token[0]){
             // End of data - error!
-            if(group->mParent){
+            if(gpg->mParent){
                 return qfalse;
             }
 
@@ -150,7 +81,7 @@ static qboolean GPG_Parse(CGPGroup *group, char **dataPtr, CTextPool **textPool)
         token = GetToken(dataPtr, qtrue, qtrue);
         if(Q_stricmp(token, "{") == 0){
             // New sub group - add it.
-            newSubGroup = GPG_AddGroup(group, lastToken, textPool);
+            newSubGroup = GPG_AddGroup(gpg, lastToken, textPool);
 
             // Parse data.
             if(!GPG_Parse(newSubGroup, dataPtr, textPool)){
@@ -158,13 +89,13 @@ static qboolean GPG_Parse(CGPGroup *group, char **dataPtr, CTextPool **textPool)
             }
         }else if(Q_stricmp(token, "[") == 0){
             // New pair list.
-            newPair = GPG_AddPair(group, lastToken, 0, textPool);
+            newPair = GPG_AddPair(gpg, lastToken, 0, textPool);
             if(!GPV_Parse(newPair, dataPtr, textPool)){
                 return qfalse;
             }
         }else{
             // New pair.
-            GPG_AddPair(group, lastToken, token, textPool);
+            GPG_AddPair(gpg, lastToken, token, textPool);
         }
     }
 
@@ -179,7 +110,7 @@ Adds a GP2 group.
 ==================
 */
 
-static CGPGroup *GPG_AddGroup(CGPGroup *parent, char *name, CTextPool **textPool)
+static CGPGroup *GPG_AddGroup(CGPGroup *gpg, char *name, CTextPool **textPool)
 {
     CGPGroup    *newGroup;
 
@@ -189,15 +120,15 @@ static CGPGroup *GPG_AddGroup(CGPGroup *parent, char *name, CTextPool **textPool
 
     // Allocate memory for new group.
     newGroup = calloc(1, sizeof(CGPGroup));
-    newGroup->mParent = parent;
+    newGroup->mParent = gpg;
 
     // Set proper name.
     newGroup->mBase.mName = name;
 
     // Update sorting.
-    SortObject(newGroup, (void **)&parent->mSubGroups,
-        (void **)&parent->mInOrderSubGroups,
-        (void **)&parent->mCurrentSubGroup
+    SortObject(newGroup, (void **)&gpg->mSubGroups,
+        (void **)&gpg->mInOrderSubGroups,
+        (void **)&gpg->mCurrentSubGroup
     );
 
     return newGroup;
@@ -211,7 +142,7 @@ Adds a GP2 value based on a pair (name/value).
 ==================
 */
 
-static CGPValue *GPG_AddPair(CGPGroup *parent, char *name, char *value, CTextPool **textPool)
+static CGPValue *GPG_AddPair(CGPGroup *gpg, char *name, char *value, CTextPool **textPool)
 {
     CGPValue *newPair;
 
@@ -224,11 +155,40 @@ static CGPValue *GPG_AddPair(CGPGroup *parent, char *name, char *value, CTextPoo
 
     newPair = calloc(1, sizeof(CGPValue));
 
-    SortObject(newPair, (void **)&parent->mPairs,
-        (void **)&parent->mInOrderPairs,
-        (void **)&parent->mCurrentPair);
+    SortObject(newPair, (void **)&gpg->mPairs,
+        (void **)&gpg->mInOrderPairs,
+        (void **)&gpg->mCurrentPair);
 
     return newPair;
+}
+
+/*
+==================
+GPG_Clean
+
+Cleans a GP2 group.
+==================
+*/
+
+static void GPG_Clean(CGPGroup *gpg)
+{
+    // Iterate through pairs to clean them.
+    while(gpg->mPairs){
+        gpg->mCurrentPair = gpg->mPairs->mBase.mNext;
+        GPV_Clean(gpg->mPairs);
+        gpg->mPairs = gpg->mCurrentPair;
+    }
+
+    // Iterate through the subgroups to clean them.
+    while(gpg->mSubGroups){
+        gpg->mCurrentSubGroup = gpg->mSubGroups->mBase.mNext;
+        GPG_Clean(gpg->mSubGroups);
+        gpg->mSubGroups = gpg->mCurrentSubGroup;
+    }
+
+    if(gpg->mBase.mName != TOP_LEVEL_NAME){
+        free(gpg);
+    }
 }
 
 /*
@@ -288,6 +248,28 @@ static void GPV_AddValue(CGPValue *gpv, char *newValue, CTextPool **textPool)
 
 /*
 ==================
+GPV_Clean
+
+Cleans a GP2 value.
+==================
+*/
+
+static void GPV_Clean(CGPValue *gpv)
+{
+    CGPValue    *next;
+
+    // Iterate through values to clean them.
+    while(gpv->mList){
+        next = gpv->mList->mBase.mNext;
+        GPV_Clean(gpv->mList);
+        gpv->mList = next;
+    }
+
+    free(gpv);
+}
+
+/*
+==================
 AllocText
 
 Allocates text and returns a char pointer.
@@ -340,6 +322,26 @@ static CTextPool *AllocTextPool(int mSize)
 
     // Return pointer to this newly initialized text pool.
     return mTextPool;
+}
+
+/*
+==================
+CleanTextPool
+
+Cleans all allocated text pools.
+==================
+*/
+
+static void CleanTextPool(CTextPool *pool)
+{
+    CTextPool *next;
+
+    while(pool){
+        next = pool->mNext;
+        Z_Free(pool->mPool);
+        free(pool);
+        pool = next;
+    }
 }
 
 /*
@@ -516,6 +518,94 @@ static void SortObject(
     }
 
     *lastObject = object;
+}
+
+// CGenericParser2 (void *) routines.
+
+/*
+==================
+GP_Parse
+
+Fully parse a GP2 data buffer.
+==================
+*/
+
+TGenericParser2 GP_Parse(char **dataPtr)
+{
+    CGenericParser2     *topLevel;
+    CTextPool           *topPool;
+
+    // Allocate and zero initialize the main parser structure.
+    topLevel = calloc(1, sizeof(CGenericParser2));
+
+    // Initialize the text pool.
+    topLevel->mTextPool = AllocTextPool(TOPPOOL_SIZE);
+    topPool = topLevel->mTextPool;
+
+    // Start parsing groups.
+    topLevel->mTopLevel.mBase.mName = TOP_LEVEL_NAME;
+    if(GPG_Parse(&topLevel->mTopLevel, dataPtr, &topPool)){
+         // Successful, return the end result.
+        return topLevel;
+    }
+
+    // Unsuccessful, clean up and return.
+    GP_Clean(topLevel);
+    return NULL;
+}
+
+/*
+==================
+GP_Clean
+
+Cleans GP2 instance.
+==================
+*/
+
+void GP_Clean(TGenericParser2 GP2)
+{
+    CGenericParser2 *topLevel;
+
+    if(!GP2){
+        return;
+    }
+
+    topLevel = GP2;
+
+    // Clean the text pool.
+    CleanTextPool(topLevel->mTextPool);
+    topLevel->mTextPool = NULL;
+
+    // Recursively clean all groups and pairs.
+    GPG_Clean(&topLevel->mTopLevel);
+
+    // Clear the top level.
+    topLevel->mTopLevel.mCurrentPair = NULL;
+    topLevel->mTopLevel.mCurrentSubGroup = NULL;
+    topLevel->mTopLevel.mInOrderPairs = NULL;
+    topLevel->mTopLevel.mInOrderSubGroups = NULL;
+    topLevel->mTopLevel.mPairs = NULL;
+    topLevel->mTopLevel.mParent = NULL;
+    topLevel->mTopLevel.mSubGroups = NULL;
+}
+
+/*
+==================
+GP_Delete
+
+Cleans GP2 instance and frees the instance.
+==================
+*/
+
+void GP_Delete(TGenericParser2 *GP2)
+{
+    // Clean it first, to make sure all allocated
+    // groups and pairs are freed as well.
+    GP_Clean(*GP2);
+
+    // Free the top level.
+    free(*GP2);
+    (*GP2) = NULL;
 }
 
 /*
