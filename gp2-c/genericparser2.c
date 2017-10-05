@@ -237,16 +237,21 @@ Adds the new value to the list.
 
 static void GPV_AddValue(CGPValue *gpv, char *newValue, CTextPool **textPool)
 {
+    CGPValue    *value;
+
     if(textPool){
         newValue = AllocText((*textPool), newValue, qtrue, textPool);
     }
 
+    // Allocate the new value and set the base name.
+    value = calloc(1, sizeof(CGPValue));
+    value->mBase.mName = newValue;
+
     if(gpv->mList == NULL){
-        gpv->mList = calloc(1, sizeof(CGPValue));
-        gpv->mList->mBase.mName = newValue;
+        gpv->mList = value;
         gpv->mList->mBase.mInOrderNext = gpv->mList;
     }else{
-        ((CGPValue *)gpv->mBase.mInOrderNext)->mBase.mNext = calloc(1, sizeof(CGPValue));
+        ((CGPValue *)gpv->mBase.mInOrderNext)->mBase.mNext = value;
         gpv->mList->mBase.mInOrderNext = ((CGPValue *)gpv->mList->mBase.mInOrderNext)->mBase.mNext;
     }
 }
@@ -298,7 +303,7 @@ static char *AllocText(CTextPool *textPool, char *text, qboolean addNULL, CTextP
         return NULL;
     }
 
-    strncpy(textPool->mPool + textPool->mUsed, text, textPool->mSize - textPool->mUsed); // FIXME BOE review for truncation.
+    strncpy(textPool->mPool + textPool->mUsed, text, textPool->mSize - textPool->mUsed);
     textPool->mUsed += length;
     textPool->mPool[textPool->mUsed] = 0;
 
