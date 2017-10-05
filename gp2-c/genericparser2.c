@@ -153,7 +153,12 @@ static CGPValue *GPG_AddPair(CGPGroup *gpg, char *name, char *value, CTextPool *
         }
     }
 
+    // Allocate memory for this new pair.
     newPair = calloc(1, sizeof(CGPValue));
+
+    // Set base info.
+    newPair->mBase.mName = name;
+    GPV_AddValue(newPair, value, NULL);
 
     SortObject(newPair, (void **)&gpg->mPairs,
         (void **)&gpg->mInOrderPairs,
@@ -535,6 +540,11 @@ TGenericParser2 GP_Parse(char **dataPtr)
     CGenericParser2     *topLevel;
     CTextPool           *topPool;
 
+    // Ensure we received valid data to work with.
+    if(!*dataPtr){
+        return NULL;
+    }
+
     // Allocate and zero initialize the main parser structure.
     topLevel = calloc(1, sizeof(CGenericParser2));
 
@@ -572,12 +582,12 @@ void GP_Clean(TGenericParser2 GP2)
 
     topLevel = GP2;
 
+    // Recursively clean all groups and pairs.
+    GPG_Clean(&topLevel->mTopLevel);
+
     // Clean the text pool.
     CleanTextPool(topLevel->mTextPool);
     topLevel->mTextPool = NULL;
-
-    // Recursively clean all groups and pairs.
-    GPG_Clean(&topLevel->mTopLevel);
 
     // Clear the top level.
     topLevel->mTopLevel.mCurrentPair = NULL;
