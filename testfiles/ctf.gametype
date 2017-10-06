@@ -1,0 +1,54 @@
+//
+//	GAMETYPE:		Capture the Flag
+//
+//  DESCRIPTION:	Each team must try to retrieve the other teams flag and return it
+//					back to the capture point.  When a flag drops it will be automatically
+//					returned in the time indicated by 'g_flagreturntime'.  The defending
+//					team must protect the flag until that time.  To capture a flag you do
+//					not need your own flag to be at home.
+//
+//	TRIGGERS:		"red_capture_point"
+//					This trigger is where the red team brings the blue flag to capture it.
+//
+//					"blue_capture_point"
+//					This trigger is where the blue team brings the red flag to capture it.
+//
+//	ITEMS:			"blue_flag"
+//					This places the blue flag. Only the red team can pick up the blue flag.
+//
+//					"red_flag"
+//					This places a red flag.  Only the blue team can pick up the red flag.
+//					
+
+gametype
+{
+	displayname		"Capture the Flag"
+	respawn			"interval"
+	pickups			"no"
+	teams			"yes"
+	backpack		"100"
+		
+	description		"Each team must search for the other team's flag and bring it back to their base.  If an enemy drops a flag it will automatically return back to your base after a period of time."	
+
+	items
+	{
+		blue_flag
+		{
+            // Test comment.
+			displayname		"Blue Flag"
+
+			icon			"gfx/menus/hud/flag_blue_small"
+			model			"models/flags/flag_blue.md3"
+			boltmodel		"models/flags/flag_blue_bolt_on.glm"
+		}
+
+		red_flag
+		{
+			displayname		"Red Flag"
+
+			icon			"gfx/menus/hud/flag_red_small"
+			model			"models/flags/flag_red.md3"
+			boltmodel		"models/flags/flag_red_bolt_on.glm"
+		}
+	}
+}

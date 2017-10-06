@@ -1,0 +1,1414 @@
+version	"SOF2 items"
+
+/////////////////
+//WEAPONS
+/////////////////
+
+weapon
+{
+	name		"Knife"
+	boltpoint	"model_root"
+
+	canholster	"true"
+	holstmodel	"models\characters\bolt_ons\knife.glm"
+	canshootoff "true"
+
+	clips		"-1"
+	level		"1"
+	
+	atktype	"melee"
+}
+
+weapon
+{
+	name		"US SOCOM"
+	boltpoint	"*hand_r"
+
+	canholster	"true"
+	holstmodel	"models\characters\bolt_ons\holster.glm"
+	holstsurf	"gun"
+
+	canshootoff "true"
+	clips		"-1"
+	level		"1"
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"M1911A1"
+	boltpoint	"*hand_r"
+
+	canholster	"true"
+	holstmodel	"models\characters\bolt_ons\holster.glm"
+	holstsurf	"gun"
+
+	canshootoff "true"
+	clips		"-1"
+	level		"1"
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"USAS-12"
+	boltpoint	"*hand_r"
+
+	canshootoff "true"
+	canjam		"false"
+	clips		"-1"
+	level		"2"
+
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"M590"
+	boltpoint	"*hand_r"
+
+	canshootoff "true"
+	canjam		"false"
+	clips		"-1"
+	level		"2"
+
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"Micro Uzi"
+	boltpoint	"*hand_r"
+
+	canshootoff 	"true"
+	clips		"-1"
+	
+	atktype		"slug"
+
+}
+
+weapon
+{
+	name		"M3A1"
+	boltpoint	"*hand_r"
+
+	canshootoff 	"true"
+	clips		"-1"
+	
+	atktype		"slug"
+
+}
+
+weapon
+{
+	name		"AK74"
+	boltpoint	"*hand_r"
+
+	canshootoff "true"
+	canjam		"true"
+	clips		"-1"
+	level		"2"
+
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"M4"
+	boltpoint	"*hand_r"
+
+	canshootoff "true"
+	canjam		"true"
+	clips		"-1"
+	level		"3"
+
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"MSG90A1"
+	boltpoint	"*hand_r"
+
+	canshootoff "true"
+	canjam		"false"
+	clips		"-1"
+	level		"3"
+
+	
+	atktype	"slug"
+}
+
+weapon
+{
+	name		"M60"
+	boltpoint	"*hand_r"
+
+	canshootoff 	"true"
+	canjam		"false"
+	clips		"-1"
+	level		"3"
+
+
+	atktype		"slug"
+
+}
+
+weapon
+{
+	name		"MM1"
+	boltpoint	"*hand_r"
+
+	canshootoff 	"true"
+	canjam		"false"
+	clips		"-1"
+	level		"3"
+
+	
+	atktype	"projectile"
+
+}
+
+weapon
+{
+	name		"RPG7"
+	boltpoint	"*hand_r"
+
+	canshootoff 	"true"
+	canjam		"false"
+	clips		"-1"
+	level		"3"
+
+	
+	atktype	"missile"
+
+}
+
+weapon
+{
+	name		"ANM14"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/anm14/world/anm14world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"F1"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/f1/world/f1world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"L2A2"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/l2a2/world/l2a2world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"M15"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/m15/world/m15world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"M67"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/m67/world/m67world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"M84"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/m84/world/m84world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"MDN11"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/m84/world/m84world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+weapon
+{
+	name		"SMOHG92"
+	boltpoint	"*hand_l"
+
+	canholster	"true"
+	holstmodel	"models/weapons/smohg92/world/smohg92world.glm"
+	clips		"50"
+	
+	atktype	"projectile"
+}
+
+// OSPREY SURFACE WEAPONS
+weapon
+{
+	name		"war_wing"
+	onsurf		"war_wing"
+	onsurf		"rocket_pod_left"
+	onsurf		"rocket_pod_right"
+
+	muzzle		"bfx_pod_left"
+	muzzle2		"bfx_pod_right"
+
+	canshootoff 	"false"
+	clips			"-1"
+
+	fxname		"OSPREYRPG7"
+	
+	atktype		"missile"
+}
+
+
+weapon
+{
+	name		"tomahawk_left"
+	onsurf		"tomahawk_left"
+//	muzzle		"*tomahawk_left"
+	fxname		"OSPREYRPG7"
+
+	canshootoff "false"
+	clips		"-1"
+	
+	atktype		"missile"
+}
+
+weapon
+{
+	name		"tomahawk_right"
+	onsurf		"tomahawk_right"
+//	muzzle		"*tomahawk_right"
+
+	canshootoff "false"
+	clips		"-1"
+	
+	atktype		"missile"
+}
+
+weapon
+{
+	name		"mounted_chaingun"
+	onsurf		"chaingun"
+	muzzle		"bfx_muzzleflash"
+	eject		"bfx_ejection"
+	fxname		"OSPREYM60"
+
+	canshootoff "false"
+	clips		"-1"
+	
+	atktype		"slug"
+}
+
+
+
+
+
+//SURFACES
+
+/////////////////
+//AVERAGE_ARMOR
+/////////////////
+
+item
+{
+	name		"noears"
+	offsurf1	"ear_l"
+	offsurf2	"ear_r"
+}
+
+
+/////////////////
+//AVERAGE_SLEEVES
+/////////////////
+
+item
+{
+	name		"backpack"
+	onsurf	"backpack_lrg_off"
+}
+
+item
+{
+	name		"scarf"
+	onsurf	"scarf_off"
+}
+
+item
+{
+	name		"medium_hair_1"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+
+	onsurf3	"head_bck_lwr_l_avmed_off"
+	onsurf4	"head_bck_lwr_r_avmed_off"
+	onsurf5	"head_bck_uppr_l_avmed_off"
+	onsurf6	"head_bck_uppr_r_avmed_off"
+	onsurf7	"head_side_l_avmed_off"
+	onsurf8	"head_side_r_avmed_off"
+}
+
+item
+{
+	name		"medium_hair_2"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+
+	onsurf1	"head_bck_lwr_l_avmed_off"
+	onsurf2	"head_bck_lwr_r_avmed_off"
+	onsurf3	"head_bck_uppr_l_avmed_off"
+	onsurf4	"head_bck_uppr_r_avmed_off"
+	onsurf5	"head_side_l_avmed_off"
+	onsurf6	"head_side_r_avmed_off"
+	onsurf7	"avmedbangs_l_off"
+	onsurf8	"avmedbangs_r_off"
+}
+
+item
+{
+	name		"medium_hat"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+
+	onsurf1	"head_bck_lwr_l_avmedhat_off"
+	onsurf2	"head_bck_lwr_r_avmedhat_off"
+	onsurf3	"head_bck_uppr_l_avmedhat_off"
+	onsurf4	"head_bck_uppr_r_avmedhat_off"
+	onsurf5	"head_side_l_avmedhat_off"
+	onsurf6	"head_side_r_avmedhat_off"
+}
+
+
+item
+{
+	name		"beard"
+	offsurf1	"head_frnt_lwr_l"
+	offsurf2	"head_frnt_lwr_r"
+	offsurf3	"head_frnt_mid_l"
+	offsurf4	"head_frnt_mid_r"
+
+	onsurf1	"beardhead_frnt_lwr_l_off"
+	onsurf2	"beardhead_frnt_lwr_r_off"
+	onsurf3	"beardhead_frnt_mid_l_off"
+	onsurf4	"beardhead_frnt_mid_r_off"
+}
+
+////////////////
+//SUIT_LONG_COAT
+////////////////
+
+item
+{
+	name		"labcoat"
+	onsurf1	"labcoat_r_off"
+	onsurf2	"labcoat_l_off"
+}
+
+item
+{
+	name		"collar_lab"
+	onsurf1	"labcollar_r_off"
+	onsurf2	"labcollar_l_off"
+}
+
+item
+{
+	name		"trenchcoat"
+	onsurf1	"trenchcoat_r_off"
+	onsurf2	"trenchcoat_l_off"
+}
+
+item
+{
+	name		"suit"
+	onsurf1	"suitcoat_r_off"
+	onsurf2	"suitcoat_l_off"
+}
+
+item
+{
+	name		"collar_trench"
+	onsurf1	"trenchcollar_r_off"
+	onsurf2	"trenchcollar_l_off"
+}
+
+item
+{
+	name		"long_hair_1"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+
+	onsurf3	"head_bck_lwr_l_avlong_off"
+	onsurf4	"head_bck_lwr_r_avlong_off"
+	onsurf5	"head_bck_uppr_l_avlong_off"
+	onsurf6	"head_bck_uppr_r_avlong_off"
+	onsurf7	"head_side_l_avlong_off"
+	onsurf8	"head_side_r_avlong_off"
+}
+
+//////
+//SNOW
+//////
+
+item
+{
+	name		"hood_up"
+	onsurf1	"hood_up_off"
+	onsurf2	"fur_off"
+	offsurf1 "ear_l"
+	offsurf2 "ear_r"
+}
+
+item
+{
+	name		"hood_down"
+	onsurf1	"hood_down_off"
+	offsurf1 "ear_l"
+	offsurf2 "ear_r"
+}
+
+item
+{
+	name		"hood_down_ears_on"
+	onsurf1	"hood_down_off"
+}
+
+item
+{
+	name		"mittens"
+	onsurf1	"mitten_l_off"
+	onsurf2	"mitten_r_off"
+	offsurf1 "hand_l"
+	offsurf2 "fingers_l"
+	offsurf3 "hand_r"
+	offsurf4 "fingers_r"
+}
+
+item
+{
+	name		"collar_snow"
+	onsurf1	"collar_off"
+}
+
+item
+{
+	name		"collar_snow1"
+	onsurf1	"collar_off"
+	offsurf1 "ear_l"
+	offsurf2 "ear_r"
+}
+
+//////////////
+//SUIT_SLEEVES
+//////////////
+
+item
+{
+	name		"collar_suitsleeves"
+	offsurf1	"collar_l"
+	offsurf2	"collar_r"
+}
+
+item
+{
+	name		"sleeves"
+	offsurf1	"sleeve_l"
+	offsurf2	"sleeve_r"
+}
+
+item
+{
+	name		"asian_eyes"
+	offsurf1	"head_frnt_uppr_r"
+	offsurf2	"head_frnt_uppr_l"
+	onsurf1		"head_frnt_uppra_r_off"
+	onsurf2		"head_frnt_uppra_l_off"
+}
+
+//////////////
+//FEMALE_PANTS
+//////////////
+
+item
+{
+	name		"fshort"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+	onsurf1		"head_bck_lwr_l_fshort_off"
+	onsurf2		"head_bck_uppr_r_fshort_off"
+	onsurf3		"head_bck_uppr_l_fshort_off"
+	onsurf4		"head_bck_lwr_r_fshort_off"
+	onsurf5		"head_uppr_l_fshort_off"
+	onsurf6		"head_uppr_r_fshort_off"
+	onsurf7		"head_side_l_fshort_off"
+	onsurf8		"head_side_r_fshort_off"
+}
+
+item
+{
+	name		"flong"
+	offsurf1	"head_side_r"
+	offsurf2	"head_side_l"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_bck_lwr_l"
+	offsurf6	"head_bck_lwr_r"
+	onsurf1		"head_bck_lwr_l_flong_off"
+	onsurf2		"head_bck_lwr_r_flong_off"
+	onsurf3		"head_bck_uppr_l_flong_off"
+	onsurf4		"head_bck_uppr_r_flong_off"
+	onsurf5		"head_side_l_flong_off"
+	onsurf6		"head_side_r_flong_off"
+}
+
+item
+{
+	name		"taylor_bun"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+	offsurf7	"ponytail_off"
+	onsurf1		"head_bck_lwr_l_pony_off"
+	onsurf2		"head_bck_lwr_r_pony_off"
+	onsurf3		"head_bck_uppr_l_pony_off"
+	onsurf4		"head_bck_uppr_r_pony_off"
+	onsurf5		"head_side_l_pony_off"
+	onsurf6		"head_side_r_pony_off"
+	onsurf7		"bun_off"
+}
+
+item
+{
+	name		"ponytail"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+	onsurf1		"head_bck_lwr_l_pony_off"
+	onsurf2		"head_bck_lwr_r_pony_off"
+	onsurf3		"head_bck_uppr_l_pony_off"
+	onsurf4		"head_bck_uppr_r_pony_off"
+	onsurf5		"head_side_l_pony_off"
+	onsurf6		"head_side_r_pony_off"
+	onsurf7	"ponytail_off"
+}
+
+item
+{
+	name		"bun"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+	onsurf1	"head_bck_lwr_l_bun_off"
+	onsurf2	"head_bck_lwr_r_bun_off"
+	onsurf3	"head_bck_uppr_l_bun_off"
+	onsurf4	"head_bck_uppr_r_bun_off"
+	onsurf5	"head_side_l_bun_off"
+	onsurf6	"head_side_r_bun_off"
+	onsurf7	"bun_off"
+}
+
+//////////////
+//FEMALE_SKIRT
+//////////////
+
+item
+{
+	name		"female_asian_eyes"
+	offsurf1	"head_frnt_uppr_l"
+	offsurf2	"head_frnt_uppr_r"
+	offsurf3	"head_frnt_mid_l"
+	offsurf4	"head_frnt_mid_r"
+	offsurf5	"eyelash_l_off"
+	offsurf6	"eyelash_r_off"
+	onsurf1		"head_frnt_uppra_l_off"
+	onsurf2		"head_frnt_uppra_r_off"
+	onsurf3		"head_frnt_mida_l_off"
+	onsurf4		"head_frnt_mida_r_off"
+	onsurf5		"eyelasha_l_off"
+	onsurf6		"eyelasha_r_off"
+}
+
+item
+{
+	name		"skirt_off"
+	offsurf1	"skirt_bck_l"
+	offsurf2	"skirt_bck_r"
+	offsurf3	"skirt_frnt_l"
+	offsurf4	"skirt_frnt_r"
+}
+
+///////////
+//CHEm_SUIT
+///////////
+
+item
+{
+	name		"chem_taylor"
+	offsurf1	"head_bck_lwr_l"
+	offsurf2	"head_bck_lwr_r"
+	offsurf3	"head_bck_uppr_l"
+	offsurf4	"head_bck_uppr_r"
+	offsurf5	"head_side_l"
+	offsurf6	"head_side_r"
+	offsurf7	"head_frnt_uppr_r"
+	offsurf8	"head_frnt_uppr_l"
+	offsurf9	"head_frnt_mid_r"
+	offsurf10	"head_frnt_mid_l"
+	offsurf11	"head_frnt_lwr_l"
+	offsurf12	"head_frnt_lwr_r"
+	offsurf13	"eyeball_r"
+	offsurf14	"eyeball_l"
+	offsurf15	"mouth_r"
+	offsurf16	"mouth_l"
+	offsurf17	"teeth_r"
+	offsurf18	"teeth_l"
+	offsurf19	"mcollar_l"
+	offsurf20	"mcollar_r"
+	onsurf1		"fhead_bck_lwr_l_off"
+	onsurf2		"fhead_bck_lwr_r_off"
+	onsurf3		"fhead_bck_uppr_l_off"
+	onsurf4		"fhead_bck_uppr_r_off"
+	onsurf5		"fhead_side_l_off"
+	onsurf6		"fhead_side_r_off"
+	onsurf7		"fhead_frnt_uppr_r_off"
+	onsurf8		"fhead_frnt_uppr_l_off"
+	onsurf9		"fhead_frnt_mid_r_off"
+	onsurf10	"fhead_frnt_mid_l_off"
+	onsurf11	"fhead_frnt_lwr_l_off"
+	onsurf12	"fhead_frnt_lwr_r_off"
+	onsurf13	"feyeball_r_off"
+	onsurf14	"feyeball_l_off"
+	onsurf15	"fmouth_r_off"
+	onsurf16	"fmouth_l_off"
+	onsurf17	"fteeth_r_off"
+	onsurf18	"fteeth_l_off"
+	onsurf19	"fcollar_l_off"
+	onsurf20	"fcollar_r_off"
+	onsurf21	"feyelash_l_off"
+	onsurf22	"feyelash_r_off"
+
+}
+
+
+
+
+//////////
+//BOLT ONS
+//////////
+
+item
+{
+	name		"backpack_radio"
+	model		"models\characters\bolt_ons\backpack_radio.glm"
+	candamage	"true"
+	health		"50"
+	protects	"true"
+}
+
+item
+{
+	name		"scarf_rebel"
+	model		"models\characters\bolt_ons\scarf_rebel.glm"
+}
+
+item
+{
+	name		"hat_marine"
+	model		"models\characters\bolt_ons\hat_marine.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"hat_boone"
+	model		"models\characters\bolt_ons\hat_boone.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"hat_baseball"
+	model		"models\characters\bolt_ons\hat_baseball.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"hat_baseball_medhair"
+	model		"models\characters\bolt_ons\hat_baseball.glm"
+	canshootoff "true"
+	offsurf1	"head_bck_lwr_l_avmed_off"
+	offsurf2	"head_bck_lwr_r_avmed_off"
+	offsurf3	"head_bck_uppr_l_avmed_off"
+	offsurf4	"head_bck_uppr_r_avmed_off"
+	offsurf5	"head_side_l_avmed_off"
+	offsurf6	"head_side_r_avmed_off"
+
+	onsurf1	"head_bck_lwr_l_avmedhat_off"
+	onsurf2	"head_bck_lwr_r_avmedhat_off"
+	onsurf3	"head_bck_uppr_l_avmedhat_off"
+	onsurf4	"head_bck_uppr_r_avmedhat_off"
+	onsurf5	"head_side_l_avmedhat_off"
+	onsurf6	"head_side_r_avmedhat_off"
+}
+
+item
+{
+	name		"helmet_military"
+	model		"models\characters\bolt_ons\helmet_military.glm"
+	onsurf		"helmet_chin_strap_off"
+	protects	"true"
+}
+
+item
+{
+	name		"helmet_military_blk"
+	model		"models\characters\bolt_ons\helmet_military_blk.glm"
+	protects	"true"
+}
+
+item
+{
+	name		"helmet_military_grn"
+	model		"models\characters\bolt_ons\helmet_military_grn.glm"
+	protects	"true"
+}
+
+item
+{
+	name		"helmet_military_white"
+	model		"models\characters\bolt_ons\helmet_military_white.glm"
+	protects	"true"
+}
+
+item
+{
+	name		"holster"
+	model		"models\characters\bolt_ons\holster.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"holster_black"
+	model		"models\characters\bolt_ons\holster_black_temp.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"holster_sanchez"
+	model		"models\characters\bolt_ons\holster_sanchez.glm"
+	canshootoff "true"
+}
+
+
+item
+{
+	name		"bandana"
+	model		"models\characters\bolt_ons\bandana.glm"
+}
+
+item
+{
+	name		"ammo_pack"
+	model		"models\characters\bolt_ons\ammo_pack.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"ammo_pack_green"
+	model		"models\characters\bolt_ons\ammo_pack_green_temp.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"ammo_pack_white"
+	model		"models\characters\bolt_ons\ammo_pack_white_temp.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"flashlight"
+	model		"models\characters\bolt_ons\flashlight.glm"
+	candamage	"true"
+	health		"20"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"canteen"
+	model		"models\characters\bolt_ons\canteen.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"canteen_black"
+	model		"models\characters\bolt_ons\canteen_black_temp.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"glasses"
+	model		"models\characters\bolt_ons\glasses.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"glasses_sun2"
+	model		"models\characters\bolt_ons\glasses_sun2.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"glasses_reading"
+	model		"models\characters\bolt_ons\glasses_reading.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"glasses_reading2"
+	model		"models\characters\bolt_ons\glasses_reading2.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"nightvision"
+	model		"models\characters\bolt_ons\nightvision_bolt_on.glm"
+	canshootoff "true"
+}
+item
+{
+	name		"alexei_glasses"
+	model		"models\characters\bolt_ons\alexei_glasses.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"goggles"
+	model		"models\characters\bolt_ons\goggles.glm"
+}
+
+item
+{
+	name		"goggles2"
+	model		"models\characters\bolt_ons\goggles_tinted2_temp.glm"
+}
+
+item
+{
+	name		"helmet_heli"
+	model		"models\characters\bolt_ons\helmet_heli.glm"
+	protects	"true"
+}
+
+item
+{
+	name		"knife"
+	model		"models\characters\bolt_ons\knife.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"knife_green"
+	model		"models\characters\bolt_ons\knife_green_temp.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"knife_white"
+	model		"models\characters\bolt_ons\knife_white_temp.glm"
+	canshootoff "true"
+	protects	"true"
+}
+
+item
+{
+	name		"hueystick"
+	model		"models\characters\bolt_ons\hueystick.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"hat_boone_blk"
+	model		"models\characters\bolt_ons\hat_boone_blk_temp.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"hat_warf_snow"
+	model		"models\characters\bolt_ons\hat_warf_snow.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"hat_warf_blk"
+	model		"models\characters\bolt_ons\hat_warf_blk.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"gasmask"
+	model		"models\characters\bolt_ons\mask_gas.glm"
+	protects	"false"
+}
+
+item
+{
+	name		"hitechdevice"
+	model		"models\characters\bolt_ons\hi_tech_device.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"clipboard"
+	model		"models\characters\bolt_ons\clipboard.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"briefcase"
+	model		"models\characters\bolt_ons\briefcase.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"briefcase_silver"
+	model		"models\characters\bolt_ons\briefcase_silver_hand.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"shoppingbag"
+	model		"models\characters\bolt_ons\shopping_bag.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"gunny_sack"
+	model		"models\characters\bolt_ons\gunny_sack.glm"
+	Deathmatch	"no"
+}
+item
+{
+	name		"parachute"
+	model		"models\characters\bolt_ons\parachute.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"cigarette"
+	model		"models\characters\bolt_ons\cigarette.glm"
+	Deathmatch	"no"
+
+// Below are the fields used to make an inventory item usable by an NPC
+//------------------------------------------------------------------------------------------------------------------
+	candraw		"true"
+	canuse		"true"
+	canexamine		"false"
+	canthrow		"true"
+	canholster		"false"
+
+	bolt			"*hand_l"
+
+	// On the use animation, you can specify an effect to play
+	useeffect		"effects/misc/cigarette_smoke.efx"	
+	usebone		"*head_f"
+	usecount		"5"
+	usefrequency	"50"
+
+	alwaysprecache	"true"
+//------------------------------------------------------------------------------------------------------------------
+}
+
+item
+{
+	name		"ponytail_grey"
+	model		"models\characters\bolt_ons\ponytail_grey.glm"
+}
+
+item
+{
+	name		"ponytail_blk"
+	model		"models\characters\bolt_ons\ponytail_blk.glm"
+}
+
+item
+{
+	name		"hat_fireman"
+	model		"models\characters\bolt_ons\hat_fireman.glm"
+}
+
+item
+{
+	name		"hat_police"
+	model		"models\characters\bolt_ons\hat_police.glm"
+}
+
+item
+{
+	name		"hat_taxi"
+	model		"models\characters\bolt_ons\hat_taxi.glm"
+}
+
+item
+{
+	name		"hat_beret_blk"
+	model		"models\characters\bolt_ons\hat_beret_blk.glm"
+}
+
+item
+{
+	name		"hat_beret_red"
+	model		"models\characters\bolt_ons\hat_beret_red.glm"
+}
+
+item
+{
+	name		"hat_chief"
+	model		"models\characters\bolt_ons\hat_chief.glm"
+}
+
+item
+{
+	name		"heavypack_l"
+	model		"models\characters\bolt_ons\heavypack_l.glm"
+}
+
+item
+{
+	name		"heavypack_r"
+	model		"models\characters\bolt_ons\heavypack_r.glm"
+}
+
+item
+{
+	name		"chem_backpack"
+	model		"models\characters\bolt_ons\chem_backpack.glm"
+}
+
+item
+{
+	name		"chem_backpack_russian"
+	model		"models\characters\bolt_ons\chem_backpack_russian.glm"
+}
+item
+{
+	name		"chem_backpack_taylor"
+	model		"models\characters\bolt_ons\chem_backpack_t.glm"
+}
+
+item
+{
+	name		"hat_warf_brn"
+	model		"models\characters\bolt_ons\hat_warf_brn.glm"
+}
+
+item
+{
+	name		"hat_conductor"
+	model		"models\characters\bolt_ons\hat_conductor.glm"
+}
+
+item
+{
+	name		"hat_honor"
+	model		"models\characters\bolt_ons\hat_honor.glm"
+}
+
+item
+{
+	name		"backpack_tank"
+	model		"models\characters\bolt_ons\backpack_tank.glm"
+}
+
+item
+{
+	name		"backpack_snow"
+	model		"models\characters\bolt_ons\backpack_snow.glm"
+}
+
+item
+{
+	name		"hat_beret_marine"
+	model		"models\characters\bolt_ons\hat_beret_marine.glm"
+}
+
+item
+{
+	name		"bar_stool_bolt_on"
+	model		"models\characters\bolt_ons\bar_stool_bolt_on.glm"
+}
+
+item
+{
+	name		"headset"
+	model		"models\characters\bolt_ons\headset.glm"
+}
+
+item
+{
+	name		"headset_col1"
+	model		"models\characters\bolt_ons\headset_col1.glm"
+}
+
+item
+{
+	name		"helmet_shield"
+	model		"models\characters\bolt_ons\helmet_shield.glm"
+	canshootoff "false"
+	protects	"true"
+}
+
+item
+{
+	name		"shield"
+	model		"models\characters\bolt_ons\shield.glm"
+	canshootoff "false"
+	protects	"true"
+	Deathmatch	"no"
+}
+item
+{
+	name		"wilson_tube"
+	model		"models\characters\bolt_ons\wilson_tube.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"pen"
+	model		"models\characters\bolt_ons\pen.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"finca4_ussocom"
+	model		"models\weapons\ussocom\world\ussocomworld.glm"
+	Deathmatch	"no"
+}
+
+
+item
+{
+	name		"smoke_grenade"
+	model		"models/weapons/m15/world/m15world.glm"
+	canshootoff "false"
+	protects	"false"
+
+
+// Below are the fields used to make an inventory item usable by an NPC
+//------------------------------------------------------------------------------------------------------------------
+	alwaysprecache	"true"
+
+	candraw		"true"
+	canuse		"false"
+	canexamine		"false"
+	canthrow		"true"
+	canholster		"false"
+
+	detonatetimer	"1500"
+	detonateeffect	"effects/fire/smoke_grenade"
+	detonateloseffect "effects/fire/smoke_grenade_flash"
+	inaireffect		"effects/fire/smoke_grenade_trail"
+
+	bolt			"*hand_l"
+//------------------------------------------------------------------------------------------------------------------
+}
+
+item
+{
+	name		"flash_grenade"
+	model		"models/weapons/m15/world/m15world.glm"
+	canshootoff "false"
+	protects	"false"
+
+
+// Below are the fields used to make an inventory item usable by an NPC
+//------------------------------------------------------------------------------------------------------------------
+	alwaysprecache	"true"
+
+	candraw		"true"
+	canuse		"false"
+	canexamine		"false"
+	canthrow		"true"
+	canholster		"false"
+
+	detonatetimer	"1500"
+	detonateeffect	"effects/explosions/stun_flash2"
+	detonateloseffect	"effects/explosions/stun_flash_noflash"
+	inaireffect		"effects/fire/smoke_grenade_trail"
+
+	bolt			"*hand_l"
+//------------------------------------------------------------------------------------------------------------------
+}
+
+item
+{
+	name		"bum_bottle"
+	model		"models\objects\finca\misc\winebottle\winebottle.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"hat_security"
+	model		"models\characters\bolt_ons\hat_security.glm"
+	canshootoff "true"
+}
+
+item
+{
+	name		"high_tech_device_hand"
+	model		"models\characters\bolt_ons\high_tech_device_hand.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"headset_hand_r"
+	model		"models\characters\bolt_ons\headset_hand_r.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"headset_hand_l"
+	model		"models\characters\bolt_ons\headset_hand_l.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"M1911A1_hand"
+	model		"models\weapons\m1911a1\world\m1911a1world.glm"
+	Deathmatch	"no"
+}
+
+item
+{
+	name		"HK7Key"
+	model		"models\characters\bolt_ons\keycard.glm"
+	Deathmatch	"no"
+	canshootoff "false"
+	protects	"true"
+	usetarget	"int_door"
+}
+
+item
+{
+	name		"HK7Disc"
+	model		"models\characters\bolt_ons\deviant1_disc.glm"
+	Deathmatch	"no"
+	canshootoff "false"
+	protects	"true"
+	usetarget	"hk7_nextlevel"
+}
+
+

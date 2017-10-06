@@ -21,6 +21,10 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 ===========================================================================
 */
 // qcommon.h -- definitions common between client and server, but not game.or ref modules
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
 #ifndef _QCOMMON_H_
 #define _QCOMMON_H_
 
@@ -1187,3 +1191,7 @@ extern huffman_t clientHuffTables;
 #define DLF_NO_DISCONNECT 8
 
 #endif // _QCOMMON_H_
+
+#ifdef __cplusplus
+}
+#endif // __cplusplus

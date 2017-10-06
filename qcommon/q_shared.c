@@ -188,7 +188,7 @@ float   LittleFloat (const float *l) {return _LittleFloat(l);}
 
 void CopyShortSwap(void *dest, void *src)
 {
-    byte *to = dest, *from = src;
+    byte *to = (byte *)dest, *from = (byte *)src;
 
     to[0] = from[1];
     to[1] = from[0];
@@ -196,7 +196,7 @@ void CopyShortSwap(void *dest, void *src)
 
 void CopyLongSwap(void *dest, void *src)
 {
-    byte *to = dest, *from = src;
+    byte *to = (byte *)dest, *from = (byte *)src;
 
     to[0] = from[3];
     to[1] = from[2];
@@ -616,7 +616,7 @@ qboolean SkipBracedSection (char **program, int depth) {
         }
     } while( depth && *program );
 
-    return ( depth == 0 );
+    return (qboolean)( depth == 0 );
 }
 
 /*
@@ -755,24 +755,6 @@ int Q_isalpha( int c )
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
         return ( 1 );
     return ( 0 );
-}
-
-qboolean Q_isanumber( const char *s )
-{
-    char *p;
-    double UNUSED_VAR d;
-
-    if( *s == '\0' )
-        return qfalse;
-
-    d = strtod( s, &p );
-
-    return *p == '\0';
-}
-
-qboolean Q_isintegral( float f )
-{
-    return (int)f == f;
 }
 
 #ifdef _MSC_VER

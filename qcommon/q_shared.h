@@ -23,6 +23,10 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 // q_shared.h - included first by ALL program modules.
 // A user mod should never modify this file
 
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
 #ifndef __Q_SHARED_H
 #define __Q_SHARED_H
 
@@ -1359,3 +1363,7 @@ int GetIDForString(stringID_table_t *table, const char *string);
 const char *GetStringForID(stringID_table_t *table, int id);
 
 #endif  // __Q_SHARED_H
+
+#ifdef __cplusplus
+}
+#endif // __cplusplus

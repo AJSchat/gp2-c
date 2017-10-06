@@ -21,6 +21,10 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 ===========================================================================
 */
 
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
 #ifndef __Q_PLATFORM_H
 #define __Q_PLATFORM_H
 
@@ -344,3 +348,7 @@ float FloatSwap (const float *f);
 #endif
 
 #endif
+
+#ifdef __cplusplus
+}
+#endif // __cplusplus

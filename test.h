@@ -20,21 +20,14 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see <http://www.gnu.org/licenses/>.
 ===========================================================================
 */
-// main.c - Main C file.
+// test.h
 
-#include "qcommon/q_shared.h"
-#include "qcommon/qcommon.h"
-#include "qcommon/q_platform.h"
-#include "gp2-c/genericparser2.h"
-#include "test.h"
+#ifndef __TEST_H
+#define __TEST_H
 
-int main(int argc, char** argv){
-    // Initialize the memory zones.
-    Com_Init(argv[0]);
+// Test routines.
+//=============================================
+void    BG_ParseItemFile        ( void );
+void    BG_ParseGametypeInfo    ( void );
 
-    // Test GP2 on some standard SoF2 files.
-    BG_ParseItemFile();
-    BG_ParseGametypeInfo();
-
-    return 0;
-}
+#endif // __TEST_H

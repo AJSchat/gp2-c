@@ -299,7 +299,7 @@ void *Z_TagMallocDebug( int size, int tag, char *label, char *file, int line ) {
 void *Z_TagMalloc( int size, int tag ) {
 #endif
     int     extra;
-    memblock_t  *start, *rover, *new, *base;
+    memblock_t  *start, *rover, *newBlock, *base;
     memzone_t *zone;
 
     if (!tag) {
@@ -354,14 +354,14 @@ void *Z_TagMalloc( int size, int tag ) {
     extra = base->size - size;
     if (extra > MINFRAGMENT) {
         // there will be a free fragment after the allocated block
-        new = (memblock_t *) ((byte *)base + size );
-        new->size = extra;
-        new->tag = 0;           // free block
-        new->prev = base;
-        new->id = ZONEID;
-        new->next = base->next;
-        new->next->prev = new;
-        base->next = new;
+        newBlock = (memblock_t *) ((byte *)base + size );
+        newBlock->size = extra;
+        newBlock->tag = 0;           // free block
+        newBlock->prev = base;
+        newBlock->id = ZONEID;
+        newBlock->next = base->next;
+        newBlock->next->prev = newBlock;
+        base->next = newBlock;
         base->size = size;
     }
 
@@ -449,7 +449,7 @@ Com_InitZoneMemory
 */
 void Com_InitSmallZoneMemory( void ) {
     s_smallZoneTotal = 512 * 1024;
-    smallzone = calloc( s_smallZoneTotal, 1 );
+    smallzone = (memzone_t *)calloc( s_smallZoneTotal, 1 );
     if ( !smallzone ) {
         Com_Error( ERR_FATAL, "Small zone data failed to allocate %1.1f megs", (float)s_smallZoneTotal / (1024*1024) );
     }
@@ -461,7 +461,7 @@ void Com_InitSmallZoneMemory( void ) {
 void Com_InitZoneMemory( void ) {
     s_zoneTotal = 1024 * 1024 * DEF_COMZONEMEGS;
 
-    mainzone = calloc( s_zoneTotal, 1 );
+    mainzone = (memzone_t *)calloc( s_zoneTotal, 1 );
     if ( !mainzone ) {
         Com_Error( ERR_FATAL, "Zone data failed to allocate %i megs", s_zoneTotal / (1024*1024) );
     }
