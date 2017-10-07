@@ -104,17 +104,13 @@ void BG_ParseItemFile()
     baseGroup = GP_GetBaseParseGroup(ItemFile);
     subGroup = GPG_GetSubGroups (baseGroup);
 
-    while(subGroup)
-    {
+    while(subGroup){
         Test_GPG_GetName(subGroup, temp, sizeof(temp));
 
-        if (Q_stricmp( temp, "item") == 0)
-        {
+        if(Q_stricmp(temp, "item") == 0){
             // Is this item used for deathmatch?
             Test_GPG_FindPairValue(subGroup, "Deathmatch", "yes", temp, sizeof(temp));
-
-            if (Q_stricmp( temp, "no") == 0)
-            {
+            if(Q_stricmp(temp, "no") == 0){
                 subGroup = GPG_GetNext(subGroup);
                 continue;
             }
@@ -141,7 +137,7 @@ void BG_ParseItemFile()
                     Com_Printf("Surface to turn off: %s\n", temp);
                 }
                 // Surface on?
-                else if(Q_stricmpn( temp, "onsurf", 6) == 0){
+                else if(Q_stricmpn(temp, "onsurf", 6) == 0){
                     Test_GPV_GetTopValue(pairs, temp, sizeof(temp));
                     Com_Printf("Surface to turn on: %s\n", temp);
                 }
@@ -193,7 +189,7 @@ void BG_ParseGametypeInfo()
     }
 
     // Grab the gametype sub group.
-    gtGroup = GPG_FindSubGroup ( topGroup, "gametype" );
+    gtGroup = GPG_FindSubGroup(topGroup, "gametype");
     if(!gtGroup){
         Com_Printf("No gametype sub group (2)!");
         GP_Delete(&GP2);
@@ -241,4 +237,89 @@ void BG_ParseGametypeInfo()
 
     // Cleanup the generic parser.
     GP_Delete(&GP2);
+
+    // Free memory allocated for the input file.
+    free(inputFile);
+}
+
+void BG_ParseNPCFile()
+{
+    TGenericParser2     NPCFile;
+    TGPGroup            baseGroup, subGroup, soundsGroup, pairs;
+    TGPValue            list;
+    char                *inputFile, *dataPtr;
+    char                temp[1024];
+
+    // Create the generic parser so the item file can be parsed.
+    inputFile = readFile("./testfiles/Base.npc");
+    if(!inputFile){
+        return;
+    }
+    dataPtr = inputFile;
+
+    // Open the NPC file.
+    NPCFile = Test_GP_Parse(&dataPtr, qtrue, qfalse);
+    if(!NPCFile){
+        free(inputFile);
+        return;
+    }
+
+    Com_Printf("\n--> NPC file <--\n");
+
+    baseGroup = GP_GetBaseParseGroup(NPCFile);
+    subGroup = GPG_GetSubGroups(baseGroup);
+
+    while(subGroup){
+        Test_GPG_GetName(subGroup, temp, sizeof(temp));
+
+        // A new character template.
+        if(Q_stricmp(temp, "CharacterTemplate") == 0){
+            // Parse the sounds for this character template.
+            soundsGroup = GPG_FindSubGroup(subGroup, "MPSounds");
+            if(!soundsGroup){
+                subGroup = GPG_GetNext(subGroup);
+                continue;
+            }
+
+            // Now parse all the skin groups.
+            pairs = GPG_GetPairs(soundsGroup);
+            while(pairs){
+                Com_Printf("= Sound =\n");
+
+                // Grab the sounds name.
+                Test_GPV_GetName(pairs, temp, sizeof(temp));
+                if(temp[0]){
+                    Com_Printf("Name: %s\n", temp);
+                }
+
+                // Should be a list.
+                if(GPV_IsList(pairs)){
+                    Com_Printf("== List ==\n");
+
+                    // Run through the list.
+                    list = GPV_GetList(pairs);
+                    while(list){
+                        Test_GPV_GetName(list, temp, sizeof(temp));
+                        if(temp[0]){
+                            Com_Printf("Sound in list: %s\n", temp);
+                        }
+
+                        list = GPV_GetNext(list);
+                    }
+                }
+
+                // Move to the next sound set in the parsers list.
+                pairs = GPV_GetNext(pairs);
+            }
+        }
+
+        // Move to the next group.
+        subGroup = GPG_GetNext(subGroup);
+    }
+
+    // Cleanup the generic parser.
+    GP_Delete(&NPCFile);
+
+    // Free memory allocated for the input file.
+    free(inputFile);
 }

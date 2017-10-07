@@ -29,5 +29,6 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 //=============================================
 void    BG_ParseItemFile        ( void );
 void    BG_ParseGametypeInfo    ( void );
+void    BG_ParseNPCFile         ( void );
 
 #endif // __TEST_H

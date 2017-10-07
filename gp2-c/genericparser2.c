@@ -33,7 +33,7 @@ static CGPValue     *GPG_AddPair            ( CGPGroup *gpg, char *name, char *v
 static void         GPG_Clean               ( CGPGroup *gpg );
 
 static qboolean     GPV_Parse               ( CGPValue *gpv, char **dataPtr, CTextPool **textPool );
-static void         GPV_AddValue            ( CGPValue *gpv, char *newValue, CTextPool **textPool );
+static void         GPV_AddValue            ( CGPValue *gpv, char *newValue );
 static void         GPV_Clean               ( CGPValue *gpv );
 
 static char         *AllocText              ( CTextPool *textPool, char *text, qboolean addNULL, CTextPool **poolPtr );
@@ -89,7 +89,7 @@ static qboolean GPG_Parse(CGPGroup *gpg, char **dataPtr, CTextPool **textPool)
             }
         }else if(Q_stricmp(token, "[") == 0){
             // New pair list.
-            newPair = GPG_AddPair(gpg, lastToken, 0, textPool);
+            newPair = GPG_AddPair(gpg, lastToken, NULL, textPool);
             if(!GPV_Parse(newPair, dataPtr, textPool)){
                 return qfalse;
             }
@@ -158,7 +158,9 @@ static CGPValue *GPG_AddPair(CGPGroup *gpg, char *name, char *value, CTextPool *
 
     // Set base info.
     newPair->mBase.mName = name;
-    GPV_AddValue(newPair, value, NULL);
+    if(value != NULL){
+        GPV_AddValue(newPair, value);
+    }
 
     SortObject(newPair, (void **)&gpg->mPairs,
         (void **)&gpg->mInOrderPairs,
@@ -221,7 +223,7 @@ static qboolean GPV_Parse(CGPValue *gpv, char **dataPtr, CTextPool **textPool)
         }
 
         val = AllocText((*textPool), token, qtrue, textPool);
-        GPV_AddValue(gpv, val, NULL);
+        GPV_AddValue(gpv, val);
     }
 
     return qtrue;
@@ -235,13 +237,9 @@ Adds the new value to the list.
 ==================
 */
 
-static void GPV_AddValue(CGPValue *gpv, char *newValue, CTextPool **textPool)
+static void GPV_AddValue(CGPValue *gpv, char *newValue)
 {
     CGPValue    *value;
-
-    if(textPool){
-        newValue = AllocText((*textPool), newValue, qtrue, textPool);
-    }
 
     // Allocate the new value and set the base name.
     value = calloc(1, sizeof(CGPValue));
@@ -251,7 +249,7 @@ static void GPV_AddValue(CGPValue *gpv, char *newValue, CTextPool **textPool)
         gpv->mList = value;
         gpv->mList->mBase.mInOrderNext = gpv->mList;
     }else{
-        ((CGPValue *)gpv->mBase.mInOrderNext)->mBase.mNext = value;
+        ((CGPValue *)gpv->mList->mBase.mInOrderNext)->mBase.mNext = value;
         gpv->mList->mBase.mInOrderNext = ((CGPValue *)gpv->mList->mBase.mInOrderNext)->mBase.mNext;
     }
 }

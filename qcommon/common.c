@@ -479,3 +479,15 @@ void Com_Init( char *commandLine ) {
     Com_InitSmallZoneMemory();
     Com_InitZoneMemory();
 }
+
+/*
+=================
+Com_Shutdown
+=================
+*/
+void Com_Shutdown()
+{
+    // Free allocated zone memory.
+    free(mainzone);
+    free(smallzone);
+}

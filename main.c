@@ -41,6 +41,10 @@ int main(int argc, char** argv){
     // Test GP2 on some standard SoF2 files.
     BG_ParseItemFile();
     BG_ParseGametypeInfo();
+    BG_ParseNPCFile();
+
+    // Free memory zones.
+    Com_Shutdown();
 
     return 0;
 }

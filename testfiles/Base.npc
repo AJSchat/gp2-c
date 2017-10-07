@@ -1,0 +1,3131 @@
+GroupInfo
+{
+	Skeleton		"average_sleeves.skl"
+	ParentTemplate	"NPC_Base_Human"
+}
+
+///////////////////////////////////////////////////////////
+// THE BASE HUMAN
+//
+// This dude is the lowest root charcter for all male
+// human characters in SOF2
+//
+///////////////////////////////////////////////////////////s
+CharacterTemplate
+{
+	Name		"NPC_Base_Human"
+	comments	"Basic Human - By Default Just Waits To Be Scripted"
+	Model		"models/characters/suit_sleeves/suit_sleeves.glm"
+	Health		"85 105"
+	Rank		"Civilian"
+	Occupation	"ScriptGuy"
+	Team		"None"
+	Deathmatch	"no"
+
+	DamageEasy	"0.040"
+	DamageMedium	"0.055"
+	DamageHard	"0.075"
+	DamageSuperHard	"0.085"
+
+
+	Skin
+	{
+		File	"hk_ped_a1"
+	}
+
+
+
+	///////////////////////////////////////////////////////////
+	// These are the bounding boxes this character and all its
+	// decendants will use in the game for the various poses
+	///////////////////////////////////////////////////////////
+	Bounds
+	{
+		Pain
+		{
+			Min	"-30 -30 -45"
+			Max	"30 30 45"
+		}
+		DeadPain
+		{
+			Min	"-50 -50 -45"
+			Max	"50 50 45"
+		}
+		Dead
+		{
+			Min	"-10 -10 -45"
+			Max	"10 10 -35"
+		}
+		Stand
+		{
+			Min	"-17 -17 -45"
+			Max	"17 17 45"
+		}
+		Dive
+		{
+			Min	"-17 -17 -45"
+			Max	"17 17 15"
+		}
+		Crouch
+		{
+			Min	"-17 -17 -45"
+			Max	"17 17 45"
+		}
+		Prone
+		{
+			Min	"-17 -17 -45"
+			Max	"17 17 -35"
+		}
+		Vault
+		{
+			Min "-17 -17 5"
+			Max "17 17 45"
+		}
+		Fall
+		{
+			Min "-10 -10 15"
+			Max "10 10 45"
+		}
+		Rappel
+		{
+			Min "-25 -25 -35"
+			Max "25 25 35"
+		}
+	}
+
+	///////////////////////////////////////////////////////////
+	// These are the sound effects this character and all its
+	// decendants will use in the game for special actions
+	///////////////////////////////////////////////////////////
+	Voice
+	{
+		Special
+		{
+			Pain_1		"sound/pain_death/male/pain01"
+			Pain_2		"sound/pain_death/male/pain02"
+			Pain_3		"sound/pain_death/male/pain03"
+
+			Death_1		"sound/pain_death/male/die01"
+			Death_2		"sound/pain_death/male/die02"
+			Death_3		"sound/pain_death/male/die03"
+			Death_4		"sound/pain_death/male/die04"
+			Death_5		"sound/pain_death/male/die05"
+			
+			Grunt_1		"sound/pain_death/male/grunt01"
+			Grunt_2		"sound/pain_death/male/grunt02"
+			Grunt_3		"sound/pain_death/male/grunt03"
+
+			Idle_1		"sound/misc/models/cough01"
+			Idle_2		"sound/misc/models/cough02"
+			Idle_3		"sound/misc/models/cough03"
+			Idle_4		"sound/misc/models/cough04"
+			Idle_5		"sound/misc/models/whistle01"
+			Idle_6		"sound/misc/models/whistle02"
+			Idle_7		"sound/enemy/walkie"
+			Idle_8		"sound/misc/nullsound"
+
+			Scream_1	"sound/pain_death/male/scream01"
+			Scream_2	"sound/pain_death/male/scream02"
+			Scream_3	"sound/pain_death/male/scream03"
+			Scream_4	"sound/pain_death/male/scream04"
+			Scream_5	"sound/pain_death/male/scream05"
+
+			Gib_1		"sound/player/bullet_impacts/gore/head_explode01"
+			Gib_2		"sound/player/bullet_impacts/gore/head_explode02"
+			Gib_3		"sound/player/bullet_impacts/gore/limb_explode01"
+			Gib_4		"sound/player/bullet_impacts/gore/limb_explode02"
+			Gib_5		"sound/player/bullet_impacts/gore/head_explode03"
+			Gib_6		"sound/player/bullet_impacts/gore/head_explode04"
+
+			HitBody_1	"sound/player/bullet_impacts/gore/body_impact0"
+			HitBody_2	"sound/player/bullet_impacts/gore/body_impact1"
+
+
+			HitArmor_1	"sound/player/bullet_impacts/armor/armor0"
+			HitArmor_2	"sound/player/bullet_impacts/armor/armor1"
+
+		}
+	}
+
+	MPSounds
+	{
+		Death
+		[
+			sound/pain_death/male/die01.mp3
+			sound/pain_death/male/die04.mp3
+			sound/pain_death/male/die05.mp3
+		]
+		Pain
+		[
+			sound/pain_death/male/grunt01.mp3
+			sound/pain_death/male/grunt02.mp3
+			sound/pain_death/male/grunt03.mp3
+		]
+	}
+}
+
+///////////////////////////////////////////////////////////
+// THE MARINES
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Marine_Soldier"
+	FormalName	"US Marine"
+	comments	"The Basic Marine Soldier. Use 'setskin' to change skins. 'marine_camo2' - 'marine_camo3' - 'marine_washington'"
+	Model		"models/characters/average_sleeves/average_sleeves.glm"
+	Health		"110 120"
+	Team		"The Shop"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Accuracy	"0.7"
+	DamageEasy	"0.08"
+	DamageMedium	"0.08"
+	DamageHard	"0.08"
+	DamageSuperHard	"0.08"
+
+	Inventory
+	{
+		Weapon
+		{
+			Name		"US SOCOM"
+			Bolt		"*hip_r"
+		}
+		Item
+		{
+			Name		"ammo_pack_green"
+			Bolt		"*hip_fl"
+		}
+		
+	}
+
+
+	Skin
+	{
+		File		"marine_camo2"
+		mp_identity	"marinesoldier1"
+		mp_team		"marine"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Item
+			{
+				Name		"backpack"
+				mp_onback	YES
+			}
+			Item
+			{
+				Name		"helmet_military"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"ammo_pack_green"
+				Bolt		"*uchest_l"
+			}
+			Item
+			{
+				Name		"canteen"
+				Bolt		"*hip_br"
+			}
+			
+		}
+	}
+
+	Skin
+	{
+		File		"marine_camo3"
+		mp_identity	"marinesoldier2"
+		mp_team		"marine"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Item
+			{
+				Name		"backpack"
+				mp_onback	YES
+			}
+			Item
+			{
+				Name		"canteen"
+				Bolt		"*hip_br"
+			}
+			Item
+			{
+				Name		"hat_boone"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"scarf"
+			}
+			Item
+			{
+				Name		"flashlight"
+				Chance	30
+				Bolt		"*shldr_r"
+			}
+			Item
+			{
+				Name		"knife_green"
+				Chance	70
+				Bolt		"*hip_l"
+			}
+			
+		}
+	}
+
+	Skin
+	{
+		File		"marine_washington"
+		mp_identity	"marinesoldier3"
+		mp_team		"marine"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Item
+			{
+				Name		"backpack"
+				mp_onback	YES
+			}
+			Item
+			{
+				Name		"helmet_military"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"scarf"
+			}
+			Item
+			{
+				Name		"ammo_pack_green"
+				Bolt		"*uchest_l"
+			}
+			Item
+			{
+				Name		"canteen"
+				Bolt		"*hip_br"
+			}
+			
+		}
+	}
+
+}
+
+
+///////////////////////////////////////////////////////////
+// PROMETHEUS SOLDIERS
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Prometheus_Soldier"
+	FormalName	"Grunt Prometheus Soldier"
+	comments	"The Basic Prometheus Soldier."
+	Team		"Prometheus"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Model		"models/characters/average_armor/average_armor.glm"
+	Accuracy	".80"
+	DamageEasy		"0.065"
+	DamageMedium	"0.075"
+	DamageHard		"0.090"
+	DamageSuperHard	"0.100"
+
+
+	Inventory
+	{
+		Item
+		{
+			Name		"noears"
+		}
+		Weapon
+		{
+			Name		"M1911A1"
+			Bolt		"*hip_r"
+		}
+		Item
+		{
+			Name		"ammo_pack"
+			Bolt		"*hip_fl"
+		}
+	}
+
+	Skin
+	{
+		File	"prometheus_soldier"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Weapon
+			{
+				Name		"MDN11"
+				Bolt		"*uchest_r"
+				Chance	80
+			}
+			Item
+			{
+				Name		"helmet_military_blk"
+				Bolt		"*head_t"
+				Chance	100
+			}
+			Item
+			{
+				Name		"gasmask"
+				Bolt		"*head_f"
+			}
+		}
+	}
+
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1		"sound/enemy/english/male/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2		"sound/enemy/english/male/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3		"sound/enemy/english/male/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4		"sound/enemy/english/male/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5		"sound/enemy/english/male/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6		"sound/enemy/english/male/see_him"
+			Token			"AMB2_031"
+			TargetAcquired_7		"sound/enemy/english/male/take_him_out"
+			Token			"AMB2_034"
+			TargetAcquired_8		"sound/enemy/english/male/there_he_is"
+			Token			"AMB2_079"
+			TargetAcquired_9		"sound/enemy/english/male/right_here"
+			Token			"AMB2_099"
+			TargetAcquired_10		"sound/enemy/english/male/over_here"
+			Token			"AMB2_083"
+			TargetAcquired_11		"sound/enemy/english/male/over_there"
+
+			Token			"AMB2_049"
+			TargetEliminated_1		"sound/enemy/english/male/target_eliminate"
+			Token			"AMB2_092"
+			TargetEliminated_2      "sound/enemy/english/male/he_dead"
+			Token			"AMB2_094"
+			TargetEliminated_3      "sound/enemy/english/male/got_bastard"
+
+			Token			"AMB2_050"
+			TargetLost_1			"sound/enemy/english/male/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2			"sound/enemy/english/male/lost_him"
+			Token			"AMB2_084"
+			TargetLost_3			"sound/enemy/english/male/find_him"
+			Token			"AMB2_073"
+			TargetLost_4			"sound/enemy/english/male/spread_out"
+			Token			"AMB2_080"
+			TargetLost_5			"sound/enemy/english/male/surround_him"
+			Token			"AMB2_018"
+			TargetLost_6			"sound/enemy/english/male/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7			"sound/enemy/english/male/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1		"sound/enemy/english/male/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2		"sound/enemy/english/male/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1				"sound/enemy/english/male/underfire01"
+			Token			"AMB2_039"
+			Underfire_2				"sound/enemy/english/male/underfire02"
+			Token			"AMB2_040"
+			Underfire_3				"sound/enemy/english/male/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete		"sound/enemy/english/male/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1			"sound/enemy/english/male/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2			"sound/enemy/english/male/watch_out"
+			Token			"AMB2_008"
+			FireInTheHole_3			"sound/enemy/english/male/take_cover2"
+
+			Token			"AMB2_005"
+			SoundAlarm_1			"sound/enemy/english/male/call_for_reinforcements"
+			Token			"AMB2_102"
+			SoundAlarm_2			"sound/enemy/english/male/need_backup"
+			Token			"AMB2_101"
+			SoundAlarm_3			"sound/enemy/english/male/need_help"
+			Token			"AMB2_105"
+			SoundAlarm_4			"sound/enemy/english/male/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5			"sound/enemy/english/male/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1				"sound/enemy/english/male/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2				"sound/enemy/english/male/man_down01"
+			Token			"AMB2_020"
+			ManDown_3				"sound/enemy/english/male/man_down02"
+			Token			"AMB2_021"
+			ManDown_4				"sound/enemy/english/male/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1			"sound/enemy/english/male/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2			"sound/enemy/english/male/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3			"sound/enemy/english/male/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4			"sound/enemy/english/male/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5			"sound/enemy/english/male/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1			"sound/enemy/english/male/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2			"sound/enemy/english/male/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3			"sound/enemy/english/male/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4			"sound/enemy/english/male/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5			"sound/enemy/english/male/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6			"sound/enemy/english/male/what_the"
+
+			
+			ExamineStop				"sound/misc/models/patrolreturn01"
+			
+			Holding					"sound/enemy/english/team/orders/holding"						
+
+			Hot						"sound/enemy/english/team/orders/hot"						
+
+			Got						"sound/enemy/english/team/orders/ive_got"						
+
+			Clear					"sound/enemy/english/team/orders/clear"
+
+			Closing					"sound/enemy/english/team/orders/closing"
+
+			ClosingFast				"sound/enemy/english/team/orders/closing_fast"
+
+			Secure					"sound/enemy/english/team/orders/secure"
+
+			TargetCold				"sound/enemy/english/team/orders/target_cold"
+
+			TargetHot				"sound/enemy/english/team/orders/target_hot"
+
+			TargetMultiple			"sound/enemy/english/team/orders/targets_multiple"
+
+			TargetOne				"sound/enemy/english/team/orders/targets_one"
+
+			Notargets				"sound/enemy/english/team/orders/notargets"			
+		}
+		Areas
+		{
+			Annex					"sound/enemy/english/team/orders/annex"
+			Bathroom				"sound/enemy/english/team/orders/bathroom"
+			Bunker					"sound/enemy/english/team/orders/bunker"
+			CheckPoint1				"sound/enemy/english/team/orders/checkpoint1"
+			CheckPoint2				"sound/enemy/english/team/orders/checkpoint2"
+			CheckPoint3				"sound/enemy/english/team/orders/checkpoint3"
+			Compro					"sound/enemy/english/team/orders/compro"
+			ComputerRoom			"sound/enemy/english/team/orders/computer_room"
+			ControlRoom				"sound/enemy/english/team/orders/control_room"
+			East					"sound/enemy/english/team/orders/east"
+			EastWing				"sound/enemy/english/team/orders/east_wing"
+			ElevatorArea			"sound/enemy/english/team/orders/elevator_area"				
+			EngineRoom				"sound/enemy/english/team/orders/engine_room"				
+			Floor1					"sound/enemy/english/team/orders/floor1"				
+			Floor2					"sound/enemy/english/team/orders/floor2"				
+			Floor3					"sound/enemy/english/team/orders/floor3"				
+			Foyer					"sound/enemy/english/team/orders/foyer"				
+			Garage					"sound/enemy/english/team/orders/garage"	
+			Grounds					"sound/enemy/english/team/orders/grounds"						
+			HallNorth				"sound/enemy/english/team/orders/hall_north"						
+			HallSouth				"sound/enemy/english/team/orders/hall_south"						
+			Lab1					"sound/enemy/english/team/orders/lab1"						
+			Lab2					"sound/enemy/english/team/orders/lab2"						
+			Lab3					"sound/enemy/english/team/orders/lab3"	
+			North					"sound/enemy/english/team/orders/north"				
+			Sector1					"sound/enemy/english/team/orders/sector1"
+			Sector2					"sound/enemy/english/team/orders/sector2"
+			Sector3					"sound/enemy/english/team/orders/sector3"			
+			South					"sound/enemy/english/team/orders/south"
+			StairNorth				"sound/enemy/english/team/orders/stair_north"
+			StairSouth				"sound/enemy/english/team/orders/stair_south"
+			West					"sound/enemy/english/team/orders/west"
+			WestWing				"sound/enemy/english/team/orders/west_wing"	
+		}
+	}
+}
+
+///////////////////////////////////////////////
+//PROMETHEUS SNOW SOLDIERS (INDOOR)
+///////////////////////////////////////////////
+
+CharacterTemplate
+{
+	Name		"NPC_Pro_In_Snow_Soldier"
+	FormalName	"Grunt Prometheus Snow Soldier"
+	comments	"The Basic Indoor Prometheus Snow Soldier."
+	Team		"Prometheus"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Model		"models/characters/average_armor/average_armor.glm"
+	Accuracy	".95"
+	DamageEasy		"0.065"
+	DamageMedium	"0.090"
+	DamageHard		"0.100"
+	DamageSuperHard	"0.120"
+
+	Inventory
+	{
+		Item
+		{
+			Name		"noears"
+		}
+		Weapon
+		{
+			Name		"M1911A1"
+			Bolt		"*hip_r"
+		}
+		Item
+		{
+			Name		"ammo_pack"
+			Bolt		"*hip_fl"
+		}
+	}
+
+	Skin
+	{
+		File	"pro_snow_indoor_soldier"
+		NoFaceAnims	"True"
+
+		mp_identity	"snowindoor"
+		mp_team		"snow"
+	}
+
+	Voice
+	{
+		Reports
+		{
+
+			Token			"AMB2_048"
+			TargetAcquired_1			"sound/enemy/russian/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2			"sound/enemy/russian/soldier/hey"
+			Token			"AMB2_104"
+			TargetAcquired_3			"sound/enemy/russian/soldier/attack"
+			Token			"AMB2_015"
+			TargetAcquired_4			"sound/enemy/russian/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5			"sound/enemy/russian/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6			"sound/enemy/russian/soldier/see_him"
+			Token			"AMB2_103"
+			TargetAcquired_7			"sound/enemy/russian/soldier/kill"
+			Token			"AMB2_034"
+			TargetAcquired_8			"sound/enemy/russian/soldier/there_he_is"
+			Token			"AMB2_047"
+			TargetAcquired_9			"sound/enemy/russian/soldier/eliminate_target"
+			Token			"AMB2_099"
+			TargetAcquired_10			"sound/enemy/russian/soldier/over_here"
+			Token			"AMB2_077"
+			TargetAcquired_11			"sound/enemy/russian/soldier/there_he_is"
+
+			Token			"AMB2_049"
+			TargetEliminated_1			"sound/enemy/russian/soldier/target_eliminate"
+			Token			"AMB2_046"
+			TargetEliminated_2   		   "sound/enemy/russian/soldier/awaiting_orders"
+			Token			"AMB2_057"
+			TargetEliminated_3     		 "sound/enemy/russian/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1				"sound/enemy/russian/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2				"sound/enemy/russian/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3				"sound/enemy/russian/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4				"sound/enemy/russian/soldier/take_position"
+			Token			"AMB2_018"
+			TargetLost_5				"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_037"
+			TargetLost_6				"sound/enemy/russian/soldier/disappeared"
+
+			Token			"AMB2_060"
+			PositionReached_1			"sound/enemy/russian/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2			"sound/enemy/russian/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1					"sound/enemy/russian/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2					"sound/enemy/russian/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3					"sound/enemy/russian/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete			"sound/enemy/russian/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1				"sound/enemy/russian/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2				"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_015"
+			FireInTheHole_3				"sound/enemy/russian/soldier/cover_me"
+
+			Token			"AMB2_005"
+			SoundAlarm_1				"sound/enemy/russian/soldier/call_for_reinforcements"
+			Token			"AMB2_051"
+			SoundAlarm_2				"sound/enemy/russian/soldier/execute"
+			Token			"AMB2_017"
+			SoundAlarm_3				"sound/enemy/russian/soldier/hurry"
+			Token			"AMB2_105"
+			SoundAlarm_4				"sound/enemy/russian/soldier/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5				"sound/enemy/russian/soldier/sound_the_alarm"
+
+			Token			"AMB2_040"
+			ManDown_1					"sound/enemy/russian/soldier/underfire03"
+			Token			"AMB2_019"
+			ManDown_2					"sound/enemy/russian/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3					"sound/enemy/russian/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4					"sound/enemy/russian/soldier/man_down03"
+
+			Token			"AMB2_054"
+			ExamineGroup_1				"sound/enemy/russian/soldier/investigate_area"
+			Token			"AMB2_063"
+			ExamineGroup_2				"sound/enemy/russian/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3				"sound/enemy/russian/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4				"sound/enemy/russian/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5				"sound/enemy/russian/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1				"sound/enemy/russian/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2				"sound/enemy/russian/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3				"sound/enemy/russian/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4				"sound/enemy/russian/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5				"sound/enemy/russian/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6				"sound/enemy/russian/soldier/what_the"
+
+			
+			ExamineStop					"sound/misc/models/patrolreturn01"
+
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////
+// PROMETHEUS SNOW CHARACTERS FOR RUSSIA
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Prometheus_Snow_Soldier_NG"
+	FormalName	"Prometheus Snow Soldier"
+	comments	"The Basic Prometheus Snow Solider 'no grenades' - Wanders / Patrolls Area.  Use 'setskin' to change skins.  'prometheus_snow1' - 'prometheus_snow2' - 'prometheus_snow3'"
+	Deathmatch	"no"
+	Team		"Prometheus"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Model		"models/characters/snow/snow.glm"
+	Accuracy	".95"
+	DamageEasy		"0.060"
+	DamageMedium	"0.085"
+	DamageHard		"0.090"
+	DamageSuperHard	"0.100"
+	Inventory
+	{
+			Item
+			{
+				Name		"ammo_pack_white"
+				Bolt		"*hip_fr"
+			}
+	}
+
+Skin
+	{
+		File		"prometheus_snow1"
+		NoFaceAnims	"True"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"hood_up"
+			}
+			Item
+			{
+				Name		"mittens"
+			}
+			Item
+			{
+				Name		"goggles2"
+				Bolt		"*head_t"
+				Chance	90
+			}
+		}
+	}
+	Skin
+	{
+		File		"prometheus_snow2"
+		NoFaceAnims	"True"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Item
+			{
+				Name		"hood_down"
+			}
+			Item
+			{
+				Name		"mittens"
+			}	
+			Item
+			{
+				Name		"goggles"
+				Bolt		"*head_t"
+				Chance	90
+			}
+		}
+	}
+	Skin
+	{
+		File		"prometheus_snow3"
+		mp_identity	"snowsoldier3"
+		mp_team		"snow"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"collar_snow"
+			}
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+		}
+	}
+
+
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1				"sound/enemy/russian/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2				"sound/enemy/russian/soldier/hey"
+			Token			"AMB2_104"
+			TargetAcquired_3				"sound/enemy/russian/soldier/attack"
+			Token			"AMB2_015"
+			TargetAcquired_4				"sound/enemy/russian/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5				"sound/enemy/russian/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6				"sound/enemy/russian/soldier/see_him"
+			Token			"AMB2_103"
+			TargetAcquired_7				"sound/enemy/russian/soldier/kill"
+			Token			"AMB2_034"
+			TargetAcquired_8				"sound/enemy/russian/soldier/there_he_is"
+			Token			"AMB2_047"
+			TargetAcquired_9				"sound/enemy/russian/soldier/eliminate_target"
+			Token			"AMB2_099"
+			TargetAcquired_10				"sound/enemy/russian/soldier/over_here"
+			Token			"AMB2_077"
+			TargetAcquired_11				"sound/enemy/russian/soldier/there_he_is"
+
+			Token			"AMB2_049"
+			TargetEliminated_1				"sound/enemy/russian/soldier/target_eliminate"
+			Token			"AMB2_046"
+			TargetEliminated_2    			"sound/enemy/russian/soldier/awaiting_orders"
+			Token			"AMB2_057"
+			TargetEliminated_3    			"sound/enemy/russian/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1					"sound/enemy/russian/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2					"sound/enemy/russian/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3					"sound/enemy/russian/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4					"sound/enemy/russian/soldier/take_position"
+			Token			"AMB2_018"
+			TargetLost_5					"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_037"
+			TargetLost_6					"sound/enemy/russian/soldier/disappeared"
+
+			Token			"AMB2_060"
+			PositionReached_1				"sound/enemy/russian/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2				"sound/enemy/russian/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1						"sound/enemy/russian/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2						"sound/enemy/russian/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3						"sound/enemy/russian/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete				"sound/enemy/russian/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1					"sound/enemy/russian/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2					"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_015"
+			FireInTheHole_3					"sound/enemy/russian/soldier/cover_me"
+
+			Token			"AMB2_005"
+			SoundAlarm_1					"sound/enemy/russian/soldier/call_for_reinforcements"
+			Token			"AMB2_051"
+			SoundAlarm_2					"sound/enemy/russian/soldier/execute"
+			Token			"AMB2_017"
+			SoundAlarm_3					"sound/enemy/russian/soldier/hurry"
+			Token			"AMB2_105"
+			SoundAlarm_4					"sound/enemy/russian/soldier/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5					"sound/enemy/russian/soldier/sound_the_alarm"
+
+			Token			"AMB2_040"
+			ManDown_1						"sound/enemy/russian/soldier/underfire03"
+			Token			"AMB2_019"
+			ManDown_2						"sound/enemy/russian/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3						"sound/enemy/russian/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4						"sound/enemy/russian/soldier/man_down03"
+
+			Token			"AMB2_054"
+			ExamineGroup_1					"sound/enemy/russian/soldier/investigate_area"
+			Token			"AMB2_063"
+			ExamineGroup_2					"sound/enemy/russian/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3					"sound/enemy/russian/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4					"sound/enemy/russian/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5					"sound/enemy/russian/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1					"sound/enemy/russian/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2					"sound/enemy/russian/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3					"sound/enemy/russian/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4					"sound/enemy/russian/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5					"sound/enemy/russian/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6					"sound/enemy/russian/soldier/what_the"
+
+			
+			ExamineStop						"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+
+CharacterTemplate
+{
+	Name		"NPC_Prometheus_Snow_Soldier"
+	FormalName	"Elite Prometheus Snow Soldier"
+	comments	"The Basic Prometheus Snow Soldier.  Use 'setskin' to change skins.  'prometheus_snow1' - 'prometheus_snow2' - 'prometheus_snow3'"
+	Team		"Prometheus"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Model		"models/characters/snow/snow.glm"
+	Accuracy	".95"
+	Health		"175 195"
+	DamageEasy		"0.060"
+	DamageMedium	"0.085"
+	DamageHard		"0.090"
+	DamageSuperHard	"0.100"
+
+
+	Inventory
+	{
+			Weapon
+			{
+				Name		"F1"
+				Bolt		"*uchest_r"
+				Chance	70
+			}
+			Item
+			{
+				Name		"ammo_pack_white"
+				Bolt		"*hip_fr"
+			}
+	}
+
+	Skin
+	{
+		File		"prometheus_snow1"
+		NoFaceAnims	"True"
+
+		mp_identity	"snowsoldier1"
+		mp_team		"snow"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"hood_up"
+			}
+			Item
+			{
+				Name		"mittens"
+			}
+			Item
+			{
+				Name		"goggles2"
+				Bolt		"*head_t"
+				Chance	90
+			}
+		}
+	}
+	Skin
+	{
+		File		"prometheus_snow2"
+		NoFaceAnims	"True"
+		mp_identity	"snowsoldier2"
+		mp_team		"snow"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Item
+			{
+				Name		"hood_down"
+			}
+			Item
+			{
+				Name		"mittens"
+			}	
+			Item
+			{
+				Name		"goggles"
+				Bolt		"*head_t"
+				Chance	90
+			}
+		}
+	}
+	Skin
+	{
+		File		"prometheus_snow3"
+		mp_identity	"snowsoldier3"
+		mp_team		"snow"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"collar_snow"
+			}
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+		}
+	}
+
+
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1				"sound/enemy/russian/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2				"sound/enemy/russian/soldier/hey"
+			Token			"AMB2_104"
+			TargetAcquired_3				"sound/enemy/russian/soldier/attack"
+			Token			"AMB2_015"
+			TargetAcquired_4				"sound/enemy/russian/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5				"sound/enemy/russian/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6				"sound/enemy/russian/soldier/see_him"
+			Token			"AMB2_103"
+			TargetAcquired_7				"sound/enemy/russian/soldier/kill"
+			Token			"AMB2_034"
+			TargetAcquired_8				"sound/enemy/russian/soldier/there_he_is"
+			Token			"AMB2_047"
+			TargetAcquired_9				"sound/enemy/russian/soldier/eliminate_target"
+			Token			"AMB2_099"
+			TargetAcquired_10				"sound/enemy/russian/soldier/over_here"
+			Token			"AMB2_077"
+			TargetAcquired_11				"sound/enemy/russian/soldier/there_he_is"
+
+			Token			"AMB2_049"
+			TargetEliminated_1				"sound/enemy/russian/soldier/target_eliminate"
+			Token			"AMB2_046"
+			TargetEliminated_2    			"sound/enemy/russian/soldier/awaiting_orders"
+			Token			"AMB2_057"
+			TargetEliminated_3    			"sound/enemy/russian/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1					"sound/enemy/russian/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2					"sound/enemy/russian/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3					"sound/enemy/russian/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4					"sound/enemy/russian/soldier/take_position"
+			Token			"AMB2_018"
+			TargetLost_5					"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_037"
+			TargetLost_6					"sound/enemy/russian/soldier/disappeared"
+
+			Token			"AMB2_060"
+			PositionReached_1				"sound/enemy/russian/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2				"sound/enemy/russian/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1						"sound/enemy/russian/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2						"sound/enemy/russian/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3						"sound/enemy/russian/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete				"sound/enemy/russian/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1					"sound/enemy/russian/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2					"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_015"
+			FireInTheHole_3					"sound/enemy/russian/soldier/cover_me"
+
+			Token			"AMB2_005"
+			SoundAlarm_1					"sound/enemy/russian/soldier/call_for_reinforcements"
+			Token			"AMB2_051"
+			SoundAlarm_2					"sound/enemy/russian/soldier/execute"
+			Token			"AMB2_017"
+			SoundAlarm_3					"sound/enemy/russian/soldier/hurry"
+			Token			"AMB2_105"
+			SoundAlarm_4					"sound/enemy/russian/soldier/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5					"sound/enemy/russian/soldier/sound_the_alarm"
+
+			Token			"AMB2_040"
+			ManDown_1						"sound/enemy/russian/soldier/underfire03"
+			Token			"AMB2_019"
+			ManDown_2						"sound/enemy/russian/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3						"sound/enemy/russian/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4						"sound/enemy/russian/soldier/man_down03"
+
+			Token			"AMB2_054"
+			ExamineGroup_1					"sound/enemy/russian/soldier/investigate_area"
+			Token			"AMB2_063"
+			ExamineGroup_2					"sound/enemy/russian/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3					"sound/enemy/russian/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4					"sound/enemy/russian/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5					"sound/enemy/russian/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1					"sound/enemy/russian/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2					"sound/enemy/russian/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3					"sound/enemy/russian/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4					"sound/enemy/russian/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5					"sound/enemy/russian/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6					"sound/enemy/russian/soldier/what_the"
+
+			
+			ExamineStop						"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////////
+// THE COLOMBIAN REBELS
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Colombian_Soldier"
+	FormalName	"Colombian Rebel"
+	comments	"The Colombian Soldiers are slightly more sophisticated than the regular Rebels.  They will organize into squads, just like the marines. \n painscript  name of script to play when receives pain \n deathscript  name of script to play when recieves death \n spawnscript  name of script to play when dies \n enemy  name of enemy to attack  \n stationary  set this npc to stationary state by default \n invincible  set this npc to invincible \n ignorepain  set this npc to ignore any patin \n viewdist  this is the viewing distance of the npc. Use 'setskin' to change skins.  'col_rebel_h1' - 'col_rebel_h2' - 'col_rebel_h3' - 'col_rebel_h4' - 'col_rebel_h5'"
+	Model		"models/characters/average_sleeves/average_sleeves.glm"
+	Team		"Colombian Rebels"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Accuracy	"0.60"
+
+	Inventory
+	{
+		Item
+		{
+			Name		"ammo_pack_green"
+			Bolt		"*uchest_l"
+		}
+	}
+
+	Skin
+	{
+		File		"col_rebel_h1"
+		mp_team		"colombian"
+		mp_identity	"colrebel1"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"medium_hat"
+			}
+			Item
+			{
+				Name		"scarf_rebel"
+				Chance	50
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"knife_green"
+				Bolt		"*hip_l"
+			}
+			Item
+			{
+				Name		"hat_baseball"
+				Bolt		"*head_t"
+			}
+			
+			Item
+			{	
+				Name		"cigarette"
+			}
+		}
+	}	
+
+	Skin
+	{
+		File		"col_rebel_h2"
+		mp_team		"colombian"
+		mp_identity	"colrebel2"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+			Item
+			{
+				Name		"knife_green"
+				Bolt		"*hip_l"
+			}
+			
+			Item
+			{
+				Name		"canteen"
+				Chance	40
+				Bolt		"*hip_br"
+			}
+			Item
+			{	
+				Name		"cigarette"
+			}
+		}
+	}	
+
+	Skin
+	{
+		File		"col_rebel_h3"
+		mp_team		"colombian"
+		mp_identity	"colrebel3"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+			Item
+			{
+				Name		"scarf_rebel"
+				Chance	50
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"knife_green"
+				Bolt		"*hip_l"
+			}
+			Item
+			{
+				Name		"canteen"
+				Chance	40
+				Bolt		"*hip_br"
+			}
+			Item
+			{	
+				Name		"cigarette"
+			}
+		}
+	}
+
+	Skin
+	{
+		File		"col_rebel_h4"
+		mp_team		"colombian"
+		mp_identity	"colrebel4"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+		   	Weapon
+			{
+				Name		"F1"
+				Bolt		"*uchest_r"
+				Chance	80
+			}
+			Item
+			{
+				Name		"medium_hat"
+			}
+			Item
+			{
+				Name		"scarf"
+		
+			}
+			Item
+			{
+				Name		"knife_green"
+				Bolt		"*hip_l"
+			}
+			Item
+			{
+				Name		"hat_baseball"
+				Bolt		"*head_t"
+			}
+
+			Item
+			{
+				Name		"canteen"
+				Chance	40
+				Bolt		"*hip_br"
+			}
+			Item
+			{	
+				Name		"cigarette"
+			}
+		}
+	}
+
+	Skin
+	{
+		File		"col_rebel_h5"
+		mp_team		"colombian"
+		mp_identity	"colrebel5"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"AK74"
+			}
+		   	Weapon
+			{
+				Name		"F1"
+				Bolt		"*uchest_r"
+				Chance	80
+			}
+			Item
+			{
+				Name		"medium_hat"
+			}
+			Item
+			{
+				Name		"scarf_rebel"
+				Chance	50
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"knife_green"
+				Chance	50
+				Bolt		"*hip_l"
+			}
+			Item
+			{
+				Name		"hat_baseball"
+				Bolt		"*head_t"
+			}
+			
+			Item
+			{
+				Name		"canteen"
+				Bolt		"*hip_br"
+			}
+			Item
+			{	
+				Name		"cigarette"
+			}
+		}
+	}
+
+
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/spanish/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/spanish/soldier/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/spanish/soldier/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/spanish/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/spanish/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/spanish/soldier/see_him"
+			Token			"AMB2_031"
+			TargetAcquired_7					"sound/enemy/spanish/soldier/take_him_out"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/spanish/soldier/there_he_is"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/spanish/soldier/watch_out"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/spanish/soldier/over_here"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/spanish/soldier/target_eliminate"
+			Token			"AMB2_057"
+			TargetEliminated_2    				"sound/enemy/spanish/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/spanish/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/spanish/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3						"sound/enemy/spanish/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4						"sound/enemy/spanish/soldier/take_position"
+			Token			"AMB2_030"
+			TargetLost_5						"sound/enemy/spanish/soldier/check_peri"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/spanish/soldier/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/spanish/soldier/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/spanish/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/spanish/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/spanish/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/spanish/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/spanish/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/spanish/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/spanish/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/spanish/soldier/watch_out"
+			Token			"AMB2_047"
+			FireInTheHole_3						"sound/enemy/spanish/soldier/eliminate_target"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/spanish/soldier/call_for_reinforcements"
+			Token			"AMB2_028"
+			SoundAlarm_2						"sound/enemy/spanish/soldier/secure_the_area"
+			Token			"AMB2_013"
+			SoundAlarm_3						"sound/enemy/spanish/soldier/youre_not_supposed"
+			Token			"AMB2_107"
+			SoundAlarm_4						"sound/enemy/spanish/soldier/protect_boss"
+			Token			"AMB2_006"
+			SoundAlarm_5						"sound/enemy/spanish/soldier/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/spanish/soldier/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/spanish/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/spanish/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/spanish/soldier/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/spanish/soldier/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/spanish/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/spanish/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/spanish/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/spanish/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/spanish/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/spanish/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/spanish/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/spanish/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/spanish/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/spanish/soldier/what_the"
+
+			
+			ExamineStop							"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////////
+// CIVILIANS
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Civilian"
+	FormalName	"Male Civilian"
+	comments	"Generic male civilian. Use 'setskin' to use specific skin.  'civilian_male' - 'civilian_male_h1 - 'civilian_male_b1' - 'civilian_male_w2'"
+	Model		"models/characters/suit_sleeves/suit_sleeves.glm"
+	Team		"None"
+	Rank		"Civilian"
+	Occupation	"Tourist"
+	Skin
+	{
+		File			"civilian_male"
+		mp_identity		"civilianmale1"
+		mp_team			"civilian"
+
+		Inventory
+		{
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name1		"briefcase"
+				Name2		"shoppingbag"
+				Bolt		"*hand_l"
+				Chance	50
+			}
+			Item
+			{
+				Name		"glasses_reading"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File			"civilian_male_h1"
+		mp_identity		"civilianmale2"
+		mp_team			"civilian"
+
+		Inventory
+		{
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name1		"briefcase"
+				Name2		"shoppingbag"
+				Bolt		"*hand_l"
+				Chance	50
+			}
+			Item
+			{
+				Name		"glasses_reading2"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File			"civilian_male_b1"
+		mp_identity		"civilianmale3"
+		mp_team			"civilian"
+
+		Inventory
+		{
+			Item
+			{
+				Name1		"briefcase"
+				Name2		"shoppingbag"
+				Bolt		"*hand_l"
+				Chance	50
+			}
+			Item
+			{
+				Name		"glasses_reading"
+				Bolt		"*head_t"
+				Chance		20
+			}
+		}
+	}
+	Skin
+	{
+		File			"civilian_male_w2"
+		mp_identity		"civilianmale4"
+		mp_team			"civilian"
+
+		Inventory
+		{
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name1		"briefcase"
+				Name2		"shoppingbag"
+				Bolt		"*hand_l"
+				Chance	50
+			}
+			Item
+			{
+				Name		"glasses_reading2"
+				Bolt		"*head_t"
+				Chance		20
+			}
+		}
+	}
+	Voice
+	{
+		Special
+		{
+			ShootingAtMe_1   "sound/npc/civ/english/male/whatshappen"	
+			ShootingAtMe_2   "sound/npc/civ/english/male/dont_hurt"
+			ShootingAtMe_3   "sound/npc/civ/english/male/helpme"
+			ShootingAtMe_4   "sound/npc/civ/english/male/mygod"
+			ShootingAtMe_5   "sound/npc/civ/english/male/unarmed"
+		}
+	}
+}
+
+CharacterTemplate
+{
+	Name		"NPC_Civilian_NoItems"
+	comments	"Generic male civilian. Use 'setskin' to use specific skin.  'civilian_male' - 'civilian_male_h1 - 'civilian_male_b1' - 'civilian_male_w2'"
+	Model		"models/characters/suit_sleeves/suit_sleeves.glm"
+	Team		"None"
+	Rank		"Civilian"
+	Occupation	"Tourist"
+	Deathmatch	"no"
+	Skin
+	{
+		File	"civilian_male"
+		Inventory
+		{
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name		"glasses_reading"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File	"civilian_male_h1"
+		Inventory
+		{
+			Item
+			{
+				Name		"medium_hair_1"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name		"glasses_reading2"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File	"civilian_male_b1"
+		Inventory
+		{
+			Item
+			{
+				Name		"glasses_reading"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File	"civilian_male_w2"
+		Inventory
+		{
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name		"glasses_reading2"
+				Bolt		"*head_t"
+				Chance		30
+			}
+		}
+	}
+	Voice
+	{
+		Special
+		{
+			ShootingAtMe_1   "sound/npc/civ/english/male/callpolice"	
+			ShootingAtMe_2   "sound/npc/civ/english/male/dont_hurt"
+			ShootingAtMe_3   "sound/npc/civ/english/male/helpme"
+			ShootingAtMe_4   "sound/npc/civ/english/male/mygod"
+			ShootingAtMe_5   "sound/npc/civ/english/male/unarmed"
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////
+// HONG KONG GANG
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_HongKong_Street_Thug"
+	FormalName	"Hong Kong Street Thug"
+	comments	"A generic gang thug for Hong Kong.  Use 'setskin' to change skins.  'hk_thug_a1' - 'hk_thug_a2' - 'hk_thug_a3'"
+	Team		"Hong Kong Gang"
+	Rank		"Criminal"
+	Occupation	"Thug"
+	Model		"models/characters/suit_sleeves/suit_sleeves.glm"
+	Accuracy	".70"
+
+	DamageEasy		"0.065"
+	DamageMedium	"0.075"
+	DamageHard		"0.085"
+	DamageSuperHard	"0.100"
+
+	Inventory
+	{
+	   	Weapon
+		{
+			Name		"L2A2"
+			Bolt		"*uchest_r"
+			Chance	30
+		}
+		Item
+		{
+			Name		"asian_eyes"
+		}
+		Item
+		{
+			Name		"sleeves"
+		}
+		Item
+		{
+			Name		"collar_suitsleeves"
+		}
+	}
+	Skin
+	{
+		File			"hk_thug_a1"
+		mp_identity		"thug1"
+		mp_team			"thug"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"glasses_sun2"
+				Bolt		"*head_t"
+				Chance		50
+			}
+		}
+	}
+	Skin
+	{
+		File			"hk_thug_a2"
+		mp_identity		"thug2"
+		mp_team			"thug"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"glasses"
+				Bolt		"*head_t"
+				Chance		30
+			}
+		}
+	}
+	Skin
+	{
+		File			"hk_thug_a3"
+		mp_identity		"thug3"
+		mp_team			"thug"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"medium_hair_2"
+			}
+			Item
+			{
+				Name		"glasses_sun2"
+				Bolt		"*head_t"
+				Chance		20
+			}
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/cantonese/male/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/cantonese/male/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/cantonese/male/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/cantonese/male/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/cantonese/male/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/cantonese/male/see_him"
+			Token			"AMB2_079"
+			TargetAcquired_7					"sound/enemy/cantonese/male/right_here"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/cantonese/male/there_he_is"
+			Token			"AMB2_004"
+			TargetAcquired_9					"sound/enemy/cantonese/male/drop_your_weapon"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/cantonese/male/over_here"
+			Token			"AMB2_083"
+			TargetAcquired_11					"sound/enemy/cantonese/male/over_there"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/cantonese/male/target_eliminate"
+			Token			"AMB2_057"
+			TargetEliminated_2    				"sound/enemy/cantonese/male/success"
+			Token			"AMB2_093"
+			TargetEliminated_3    				"sound/enemy/cantonese/male/killed_him"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/cantonese/male/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/cantonese/male/lost_him"
+			Token			"AMB2_084"
+			TargetLost_3						"sound/enemy/cantonese/male/find_him"
+			Token			"AMB2_073"
+			TargetLost_4						"sound/enemy/cantonese/male/spread_out"
+			Token			"AMB2_080"
+			TargetLost_5						"sound/enemy/cantonese/male/surroundhim"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/cantonese/male/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/cantonese/male/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/cantonese/male/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/cantonese/male/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/cantonese/male/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/cantonese/male/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/cantonese/male/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/cantonese/male/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/cantonese/male/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/cantonese/male/watch_out"
+			Token			"AMB2_047"
+			FireInTheHole_3						"sound/enemy/cantonese/male/eliminate_target"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/cantonese/male/call_for_reinforcements"
+			Token			"AMB2_015"
+			SoundAlarm_2						"sound/enemy/cantonese/male/cover_me"
+			Token			"AMB2_051"
+			SoundAlarm_3						"sound/enemy/cantonese/male/execute"
+			Token			"AMB2_006"
+			SoundAlarm_4						"sound/enemy/cantonese/male/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/cantonese/male/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/cantonese/male/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/cantonese/male/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/cantonese/male/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/cantonese/male/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/cantonese/male/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/cantonese/male/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/cantonese/male/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/cantonese/male/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/cantonese/male/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/cantonese/male/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/cantonese/male/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/cantonese/male/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/cantonese/male/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/cantonese/male/what_the"
+
+			
+			ExamineStop							"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+CharacterTemplate
+{
+	Name		"NPC_HongKong_Assassin_NoGrenades"	
+	FormalName	"Hong Kong Street Assassin No Grenades"
+	comments	"The assassin for hong kong without grenades"
+	Team		"Hong Kong Gang"
+	Rank		"Private"	
+	Occupation	"Assassin"
+	Deathmatch	"no"
+	Accuracy	".70"
+	Burst		"true"		
+	Model		"models/characters/suit_sleeves/suit_sleeves.glm"			
+	Skin
+	{
+		File	"hk_thug_a1"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"glasses"
+				Bolt		"*head_t"
+				Chance		50
+			}
+			Item
+			{
+				Name		"asian_eyes"
+			}
+			Item
+			{
+				Name		"sleeves"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+		}
+	}
+	Skin
+	{
+		File	"hk_thug_a2"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"glasses_sun2"
+				Bolt		"*head_t"
+				Chance		30
+			}
+			Item
+			{
+				Name		"asian_eyes"
+			}
+			Item
+			{
+				Name		"sleeves"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+		}
+	}
+	Skin
+	{
+		File	"hk_thug_a3"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"medium_hair_2"
+			}
+			Item
+			{
+				Name		"glasses"
+				Bolt		"*head_t"
+				Chance		30
+			}
+			Item
+			{
+				Name		"asian_eyes"
+			}
+			Item
+			{
+				Name		"sleeves"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/cantonese/male/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/cantonese/male/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/cantonese/male/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/cantonese/male/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/cantonese/male/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/cantonese/male/see_him"
+			Token			"AMB2_079"
+			TargetAcquired_7					"sound/enemy/cantonese/male/right_here"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/cantonese/male/there_he_is"
+			Token			"AMB2_004"
+			TargetAcquired_9					"sound/enemy/cantonese/male/drop_your_weapon"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/cantonese/male/over_here"
+			Token			"AMB2_083"
+			TargetAcquired_11					"sound/enemy/cantonese/male/over_there"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/cantonese/male/target_eliminate"
+			Token			"AMB2_057"
+			TargetEliminated_2    				"sound/enemy/cantonese/male/success"
+			Token			"AMB2_093"
+			TargetEliminated_3    				"sound/enemy/cantonese/male/killed_him"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/cantonese/male/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/cantonese/male/lost_him"
+			Token			"AMB2_084"
+			TargetLost_3						"sound/enemy/cantonese/male/find_him"
+			Token			"AMB2_073"
+			TargetLost_4						"sound/enemy/cantonese/male/spread_out"
+			Token			"AMB2_080"
+			TargetLost_5						"sound/enemy/cantonese/male/surroundhim"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/cantonese/male/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/cantonese/male/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/cantonese/male/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/cantonese/male/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/cantonese/male/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/cantonese/male/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/cantonese/male/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/cantonese/male/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/cantonese/male/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/cantonese/male/watch_out"
+			Token			"AMB2_047"
+			FireInTheHole_3						"sound/enemy/cantonese/male/eliminate_target"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/cantonese/male/call_for_reinforcements"
+			Token			"AMB2_015"
+			SoundAlarm_2						"sound/enemy/cantonese/male/cover_me"
+			Token			"AMB2_051"
+			SoundAlarm_3						"sound/enemy/cantonese/male/execute"
+			Token			"AMB2_006"
+			SoundAlarm_4						"sound/enemy/cantonese/male/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/cantonese/male/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/cantonese/male/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/cantonese/male/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/cantonese/male/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/cantonese/male/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/cantonese/male/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/cantonese/male/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/cantonese/male/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/cantonese/male/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/cantonese/male/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/cantonese/male/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/cantonese/male/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/cantonese/male/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/cantonese/male/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/cantonese/male/what_the"
+
+			
+			ExamineStop							"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////////
+// Prometheus Sailor
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Prometheus_Sailor"
+	FormalName	"Prometheus Sailor"
+	comments	"A Prometheus Sailor for the Liner levels.  He is of 'Soldier' occupation.  Use 'setskin' to change skins.  'prometheus_sailor' - 'prometheus_sailor_w2' - 'prometheus_sailor_w3'"
+	Model		"models/characters/suit_long_coat/suit_long_coat.glm"
+	Team		"Prometheus"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Accuracy	".65"
+
+	DamageEasy		"0.064"
+	DamageMedium	"0.075"
+	DamageHard		"0.085"
+	DamageSuperHard	"0.1"
+
+ 	Skin
+	{
+		File	"prometheus_sailor"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"hat_warf_blk"
+				Bolt		"*head_t"
+				Chance	50
+			}
+			Item
+			{
+				name		"collar_suitsleeves"
+			}
+			Item
+			{
+				name		"sleeves"
+			}
+		}
+	}
+ 	Skin
+	{
+		File	"prometheus_sailor_w2"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"hat_warf_blk"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				name		"collar_suitsleeves"
+			}
+			Item
+			{
+				name		"sleeves"
+			}
+		}
+	}
+ 	Skin
+	{
+		File	"prometheus_sailor_w3"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"Micro Uzi"
+			}
+			Item
+			{
+				Name		"hat_warf_blk"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				name		"collar_suitsleeves"
+			}
+			Item
+			{
+				name		"sleeves"
+			}
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/english/male/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/english/male/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/english/male/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/english/male/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/english/male/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/english/male/see_him"
+			Token			"AMB2_031"
+			TargetAcquired_7					"sound/enemy/english/male/take_him_out"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/english/male/there_he_is"
+			Token			"AMB2_079"
+			TargetAcquired_9					"sound/enemy/english/male/right_here"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/english/male/over_here"
+			Token			"AMB2_083"
+			TargetAcquired_11					"sound/enemy/english/male/over_there"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/english/male/target_eliminate"
+			Token			"AMB2_092"
+			TargetEliminated_2    				"sound/enemy/english/male/he_dead"
+			Token			"AMB2_094"
+			TargetEliminated_3     				"sound/enemy/english/male/got_bastard"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/english/male/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/english/male/lost_him"
+			Token			"AMB2_084"
+			TargetLost_3						"sound/enemy/english/male/find_him"
+			Token			"AMB2_073"
+			TargetLost_4						"sound/enemy/english/male/spread_out"
+			Token			"AMB2_080"
+			TargetLost_5						"sound/enemy/english/male/surround_him"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/english/male/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/english/male/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/english/male/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/english/male/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/english/male/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/english/male/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/english/male/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/english/male/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/english/male/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/english/male/watch_out"
+			Token			"AMB2_008"
+			FireInTheHole_3						"sound/enemy/english/male/take_cover2"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/english/male/call_for_reinforcements"
+			Token			"AMB2_102"
+			SoundAlarm_2						"sound/enemy/english/male/need_backup"
+			Token			"AMB2_101"
+			SoundAlarm_3						"sound/enemy/english/male/need_help"
+			Token			"AMB2_105"
+			SoundAlarm_4						"sound/enemy/english/male/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5						"sound/enemy/english/male/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/english/male/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/english/male/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/english/male/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/english/male/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/english/male/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/english/male/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/english/male/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/english/male/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/english/male/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/english/male/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/english/male/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/english/male/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/english/male/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/english/male/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/english/male/what_the"
+
+			
+			ExamineStop		"sound/misc/models/patrolreturn01"
+
+			Holding								"sound/enemy/english/team/orders/holding"						
+			Hot									"sound/enemy/english/team/orders/hot"						
+			Got									"sound/enemy/english/team/orders/ive_got"						
+			Clear								"sound/enemy/english/team/orders/clear"
+			Closing								"sound/enemy/english/team/orders/closing"
+			ClosingFast							"sound/enemy/english/team/orders/closing_fast"
+			Secure								"sound/enemy/english/team/orders/secure"
+			TargetCold							"sound/enemy/english/team/orders/target_cold"
+			TargetHot							"sound/enemy/english/team/orders/target_hot"
+			TargetMultiple						"sound/enemy/english/team/orders/targets_multiple"
+			TargetOne							"sound/enemy/english/team/orders/targets_one"
+			Notargets							"sound/enemy/english/team/orders/notargets"			
+		}
+		Areas
+		{
+			Annex								"sound/enemy/english/team/orders/annex"
+			Bathroom							"sound/enemy/english/team/orders/bathroom"
+			Bunker								"sound/enemy/english/team/orders/bunker"
+			CheckPoint1							"sound/enemy/english/team/orders/checkpoint1"
+			CheckPoint2							"sound/enemy/english/team/orders/checkpoint2"
+			CheckPoint3							"sound/enemy/english/team/orders/checkpoint3"
+			Compro								"sound/enemy/english/team/orders/compro"
+			ComputerRoom						"sound/enemy/english/team/orders/computer_room"
+			ControlRoom							"sound/enemy/english/team/orders/control_room"
+			East								"sound/enemy/english/team/orders/east"
+			EastWing							"sound/enemy/english/team/orders/east_wing"
+			ElevatorArea						"sound/enemy/english/team/orders/elevator_area"				
+			EngineRoom							"sound/enemy/english/team/orders/engine_room"				
+			Floor1								"sound/enemy/english/team/orders/floor1"				
+			Floor2								"sound/enemy/english/team/orders/floor2"				
+			Floor3								"sound/enemy/english/team/orders/floor3"				
+			Foyer								"sound/enemy/english/team/orders/foyer"				
+			Garage								"sound/enemy/english/team/orders/garage"	
+			Grounds								"sound/enemy/english/team/orders/grounds"						
+			HallNorth							"sound/enemy/english/team/orders/hall_north"						
+			HallSouth							"sound/enemy/english/team/orders/hall_south"
+			Holding								"sound/enemy/english/team/orders/holding"
+			Lab1								"sound/enemy/english/team/orders/lab1"						
+			Lab2								"sound/enemy/english/team/orders/lab2"						
+			Lab3								"sound/enemy/english/team/orders/lab3"	
+			North								"sound/enemy/english/team/orders/north"				
+			Sector1								"sound/enemy/english/team/orders/sector1"
+			Sector2								"sound/enemy/english/team/orders/sector2"
+			Sector3								"sound/enemy/english/team/orders/sector3"			
+			South								"sound/enemy/english/team/orders/south"
+			StairNorth							"sound/enemy/english/team/orders/stair_north"
+			StairSouth							"sound/enemy/english/team/orders/stair_south"
+			West								"sound/enemy/english/team/orders/west"
+			WestWing							"sound/enemy/english/team/orders/west_wing"	
+		}
+	}
+}
+
+
+
+///////////////////////////////////////////////////////////
+// Prague Characters
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Czech_Soldier"
+	FormalName	"Czech Soldier"
+	comments	"Czech soldier for Prague.  Use 'setskin' to change skins.  'czech_soldier_w1' - 'czech_soldier_w2'"
+	Team		"Czech"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Model		"models/characters/average_sleeves/average_sleeves.glm"
+	Accuracy	".55"
+	Health		"70 80"
+	DamageEasy	"0.040"
+	DamageMedium	"0.045"
+	DamageHard	"0.065"
+	DamageSuperHard	"0.068"
+
+	Skin
+	{
+		File	"czech_soldier_w1"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M3A1"
+			}
+			Weapon
+			{
+				Name		"M1911A1"
+				Bolt		"*hip_r"
+			}
+			Item
+			{
+				Name		"hat_beret_blk"
+				Bolt		"*head_t"
+			}	
+		}
+	}
+	Skin
+	{
+		File	"czech_soldier_w2"
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M3A1"
+			}
+			Weapon
+			{
+				Name		"M1911A1"
+				Bolt		"*hip_r"
+			}
+			Item
+			{
+				Name		"hat_beret_blk"
+				Bolt		"*head_t"
+			}	
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/russian/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/russian/soldier/hey"
+			Token			"AMB2_104"
+			TargetAcquired_3					"sound/enemy/russian/soldier/attack"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/russian/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/russian/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/russian/soldier/see_him"
+			Token			"AMB2_103"
+			TargetAcquired_7					"sound/enemy/russian/soldier/kill"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/russian/soldier/there_he_is"
+			Token			"AMB2_047"
+			TargetAcquired_9					"sound/enemy/russian/soldier/eliminate_target"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/russian/soldier/over_here"
+			Token			"AMB2_077"
+			TargetAcquired_11					"sound/enemy/russian/soldier/there_he_is"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/russian/soldier/target_eliminate"
+			Token			"AMB2_046"
+			TargetEliminated_2   				"sound/enemy/russian/soldier/awaiting_orders"
+			Token			"AMB2_057"
+			TargetEliminated_3    				"sound/enemy/russian/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/russian/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/russian/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3						"sound/enemy/russian/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4						"sound/enemy/russian/soldier/take_position"
+			Token			"AMB2_018"
+			TargetLost_5						"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_037"
+			TargetLost_6						"sound/enemy/russian/soldier/disappeared"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/russian/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/russian/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/russian/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/russian/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/russian/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/russian/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/russian/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/russian/soldier/watch_out"
+			Token			"AMB2_015"
+			FireInTheHole_3						"sound/enemy/russian/soldier/cover_me"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/russian/soldier/call_for_reinforcements"
+			Token			"AMB2_051"
+			SoundAlarm_2						"sound/enemy/russian/soldier/execute"
+			Token			"AMB2_017"
+			SoundAlarm_3						"sound/enemy/russian/soldier/hurry"
+			Token			"AMB2_105"
+			SoundAlarm_4						"sound/enemy/russian/soldier/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5						"sound/enemy/russian/soldier/sound_the_alarm"
+
+			Token			"AMB2_040"
+			ManDown_1							"sound/enemy/russian/soldier/underfire03"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/russian/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/russian/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/russian/soldier/man_down03"
+
+			Token			"AMB2_054"
+			ExamineGroup_1						"sound/enemy/russian/soldier/investigate_area"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/russian/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/russian/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/russian/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/russian/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/russian/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/russian/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/russian/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/russian/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/russian/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/russian/soldier/what_the"
+
+			
+			ExamineStop							"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////
+// Finca Characters
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_Finca_Guard"
+	FormalName	"Finca Guard"
+	comments	"A finca guard in a suit.  Use 'setskin' to change skins.  'finca_guard_h1' - 'finca_guard_h2' - 'finca_guard_h3'"
+	Team		"Finca"
+	Rank		"Criminal"
+	Occupation	"Thug"
+	Model		"models/characters/suit_long_coat/suit_long_coat.glm"
+	Accuracy	".60"
+
+	DamageEasy		"0.054"
+	DamageMedium	"0.07"
+	DamageHard		"0.08"
+	DamageSuperHard	"0.095"
+
+	Skin
+	{
+		File		"finca_guard_h1"
+		mp_identity	"fincaguard1"
+		mp_team		"finca"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M590"
+			}
+			Item
+			{
+				Name		"suit"
+			}
+			Item
+			{
+				Name		"collar_trench"
+			}
+		}	
+	}
+	Skin
+	{
+		File		"finca_guard_h2"
+		mp_identity	"fincaguard2"
+		mp_team		"finca"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M590"
+			}
+			Item
+			{
+				Name		"suit"
+			}
+			Item
+			{
+				Name		"collar_trench"
+			}
+			Item
+			{
+				Name		"headset"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"ponytail_blk"
+				Bolt		"*head_t"
+			}
+		}
+	}
+	Skin
+	{
+		File		"finca_guard_h3"
+		mp_identity	"fincaguard3"
+		mp_team		"finca"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M590"
+			}
+			Item
+			{
+				Name		"suit"
+			}
+			Item
+			{
+				Name		"collar_trench"
+			}
+			Item
+			{
+				Name		"headset"
+				Bolt		"*head_t"
+			}
+			Item
+			{
+				Name		"ponytail_blk"
+				Bolt		"*head_t"
+			}
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/spanish/soldier/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/spanish/soldier/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/spanish/soldier/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/spanish/soldier/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/spanish/soldier/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/spanish/soldier/see_him"
+			Token			"AMB2_031"
+			TargetAcquired_7					"sound/enemy/spanish/soldier/take_him_out"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/spanish/soldier/there_he_is"
+			Token			"AMB2_004"
+			TargetAcquired_9					"sound/enemy/spanish/soldier/drop_your_weapon"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/spanish/soldier/over_here"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/spanish/soldier/target_eliminate"
+			Token			"AMB2_057"
+			TargetEliminated_2    				"sound/enemy/spanish/soldier/success"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/spanish/soldier/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/spanish/soldier/lost_him"
+			Token			"AMB2_016"
+			TargetLost_3						"sound/enemy/spanish/soldier/find_them"
+			Token			"AMB2_058"
+			TargetLost_4						"sound/enemy/spanish/soldier/take_position"
+			Token			"AMB2_030"
+			TargetLost_5						"sound/enemy/spanish/soldier/check_peri"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/spanish/soldier/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/spanish/soldier/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/spanish/soldier/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/spanish/soldier/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/spanish/soldier/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/spanish/soldier/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/spanish/soldier/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/spanish/soldier/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/spanish/soldier/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/spanish/soldier/watch_out"
+			Token			"AMB2_047"
+			FireInTheHole_3						"sound/enemy/spanish/soldier/eliminate_target"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/spanish/soldier/call_for_reinforcements"
+			Token			"AMB2_028"
+			SoundAlarm_2						"sound/enemy/spanish/soldier/secure_the_area"
+			Token			"AMB2_013"
+			SoundAlarm_3						"sound/enemy/spanish/soldier/youre_not_supposed"
+			Token			"AMB2_107"
+			SoundAlarm_4						"sound/enemy/spanish/soldier/protect_boss"
+			Token			"AMB2_006"
+			SoundAlarm_5						"sound/enemy/spanish/soldier/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/spanish/soldier/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/spanish/soldier/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/spanish/soldier/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/spanish/soldier/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/spanish/soldier/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/spanish/soldier/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/spanish/soldier/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/spanish/soldier/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/spanish/soldier/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/spanish/soldier/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/spanish/soldier/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/spanish/soldier/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/spanish/soldier/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/spanish/soldier/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/spanish/soldier/what_the"
+
+			
+			ExamineStop							"sound/misc/models/patrolreturn01"
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////////
+// Action Squad Characters
+///////////////////////////////////////////////////////////
+CharacterTemplate
+{
+	Name		"NPC_ActionSquad_Soldier"
+	FormalName	"Project Action Squad"
+	comments	"Shop Guards - For Project Action Squad"
+	Team		"The Shop"
+	Rank		"Private"
+	Occupation	"Soldier"
+	Deathmatch	"no"
+	Accuracy	".85"
+	Health		"95 115"
+
+	DamageEasy		"0.08"
+	DamageMedium	"0.08"
+	DamageHard		"0.08"
+	DamageSuperHard	"0.08"
+
+	Skin
+	{
+		File		"shop_guard_w1"
+
+		Inventory
+		{
+			Weapon
+			{
+				Name		"M4"
+			}
+			Weapon
+			{
+				Name		"M1911A1"
+				Bolt		"*hip_r"
+			}
+			Weapon
+			{
+				Name		"F1"
+				Bolt		"*uchest_r"
+				Chance	70
+			}
+			Item
+			{
+				Name		"sleeves"
+			}
+			Item
+			{
+				Name		"collar_suitsleeves"
+			}
+			Item
+			{
+				Name		"glasses_reading2"
+				Bolt		"*head_t"
+				Chance		20
+			}
+			Item
+			{
+				Name		"headset"
+				Bolt		"*head_t"
+			}
+		}
+	}
+	Voice
+	{
+		Reports
+		{
+			Token			"AMB2_048"
+			TargetAcquired_1					"sound/enemy/english/male/target_acq"
+			Token			"AMB2_011"
+			TargetAcquired_2					"sound/enemy/english/male/hey"
+			Token			"AMB2_027"
+			TargetAcquired_3					"sound/enemy/english/male/open_fire"
+			Token			"AMB2_015"
+			TargetAcquired_4					"sound/enemy/english/male/cover_me"
+			Token			"AMB2_012"
+			TargetAcquired_5					"sound/enemy/english/male/what_the"
+			Token			"AMB2_033"
+			TargetAcquired_6					"sound/enemy/english/male/see_him"
+			Token			"AMB2_031"
+			TargetAcquired_7					"sound/enemy/english/male/take_him_out"
+			Token			"AMB2_034"
+			TargetAcquired_8					"sound/enemy/english/male/there_he_is"
+			Token			"AMB2_079"
+			TargetAcquired_9					"sound/enemy/english/male/right_here"
+			Token			"AMB2_099"
+			TargetAcquired_10					"sound/enemy/english/male/over_here"
+			Token			"AMB2_083"
+			TargetAcquired_11					"sound/enemy/english/male/over_there"
+
+			Token			"AMB2_049"
+			TargetEliminated_1					"sound/enemy/english/male/target_eliminate"
+			Token			"AMB2_092"
+			TargetEliminated_2    				"sound/enemy/english/male/he_dead"
+			Token			"AMB2_094"
+			TargetEliminated_3     				"sound/enemy/english/male/got_bastard"
+
+			Token			"AMB2_050"
+			TargetLost_1						"sound/enemy/english/male/target_lost"
+			Token			"AMB2_036"
+			TargetLost_2						"sound/enemy/english/male/lost_him"
+			Token			"AMB2_084"
+			TargetLost_3						"sound/enemy/english/male/find_him"
+			Token			"AMB2_073"
+			TargetLost_4						"sound/enemy/english/male/spread_out"
+			Token			"AMB2_080"
+			TargetLost_5						"sound/enemy/english/male/surround_him"
+			Token			"AMB2_018"
+			TargetLost_6						"sound/enemy/english/male/watch_out"
+			Token			"AMB2_023"
+			TargetLost_7						"sound/enemy/english/male/stop"
+
+			Token			"AMB2_060"
+			PositionReached_1					"sound/enemy/english/male/pos_reached"
+			Token			"AMB2_052"
+			PositionReached_2					"sound/enemy/english/male/hold_here"
+
+			Token			"AMB2_038"
+			Underfire_1							"sound/enemy/english/male/underfire01"
+			Token			"AMB2_039"
+			Underfire_2							"sound/enemy/english/male/underfire02"
+			Token			"AMB2_040"
+			Underfire_3							"sound/enemy/english/male/underfire03"
+
+			Token			"AMB2_055"
+			ObjectiveComplete					"sound/enemy/english/male/obj_complete"
+
+			Token			"AMB2_008"
+			FireInTheHole_1						"sound/enemy/english/male/take_cover"
+			Token			"AMB2_018"
+			FireInTheHole_2						"sound/enemy/english/male/watch_out"
+			Token			"AMB2_008"
+			FireInTheHole_3						"sound/enemy/english/male/take_cover2"
+
+			Token			"AMB2_005"
+			SoundAlarm_1						"sound/enemy/english/male/call_for_reinforcements"
+			Token			"AMB2_102"
+			SoundAlarm_2						"sound/enemy/english/male/need_backup"
+			Token			"AMB2_101"
+			SoundAlarm_3						"sound/enemy/english/male/need_help"
+			Token			"AMB2_105"
+			SoundAlarm_4						"sound/enemy/english/male/sound_alarm2"
+			Token			"AMB2_006"
+			SoundAlarm_5						"sound/enemy/english/male/sound_the_alarm"
+
+			Token			"AMB2_022"
+			ManDown_1							"sound/enemy/english/male/medic_medic"
+			Token			"AMB2_019"
+			ManDown_2							"sound/enemy/english/male/man_down01"
+			Token			"AMB2_020"
+			ManDown_3							"sound/enemy/english/male/man_down02"
+			Token			"AMB2_021"
+			ManDown_4							"sound/enemy/english/male/man_down03"
+
+			Token			"AMB2_030"
+			ExamineGroup_1						"sound/enemy/english/male/check_peri"
+			Token			"AMB2_063"
+			ExamineGroup_2						"sound/enemy/english/male/check_that_out"
+			Token			"AMB2_062"
+			ExamineGroup_3						"sound/enemy/english/male/did_you_hear"
+			Token			"AMB2_066"
+			ExamineGroup_4						"sound/enemy/english/male/did_you_see"
+			Token			"AMB2_064"
+			ExamineGroup_5						"sound/enemy/english/male/im_going_to_check"
+
+			Token			"AMB2_069"
+			ExamineAlone_1						"sound/enemy/english/male/thought_i_heard"			
+			Token			"AMB2_068"
+			ExamineAlone_2						"sound/enemy/english/male/thought_i_saw"
+			Token			"AMB2_070"
+			ExamineAlone_3						"sound/enemy/english/male/something_not_right"
+			Token			"AMB2_065"
+			ExamineAlone_4						"sound/enemy/english/male/what_was_noise"
+			Token			"AMB2_061"
+			ExamineAlone_5						"sound/enemy/english/male/what_was_that"
+			Token			"AMB2_012"
+			ExamineAlone_6						"sound/enemy/english/male/what_the"
+
+			
+			ExamineStop		"sound/misc/models/patrolreturn01"
+
+			Holding								"sound/enemy/english/team/orders/holding"						
+			Hot									"sound/enemy/english/team/orders/hot"						
+			Got									"sound/enemy/english/team/orders/ive_got"						
+			Clear								"sound/enemy/english/team/orders/clear"
+			Closing								"sound/enemy/english/team/orders/closing"
+			ClosingFast							"sound/enemy/english/team/orders/closing_fast"
+			Secure								"sound/enemy/english/team/orders/secure"
+			TargetCold							"sound/enemy/english/team/orders/target_cold"
+			TargetHot							"sound/enemy/english/team/orders/target_hot"
+			TargetMultiple						"sound/enemy/english/team/orders/targets_multiple"
+			TargetOne							"sound/enemy/english/team/orders/targets_one"
+			Notargets							"sound/enemy/english/team/orders/notargets"			
+		}
+		Areas
+		{
+			Annex								"sound/enemy/english/team/orders/annex"
+			Bathroom							"sound/enemy/english/team/orders/bathroom"
+			Bunker								"sound/enemy/english/team/orders/bunker"
+			CheckPoint1							"sound/enemy/english/team/orders/checkpoint1"
+			CheckPoint2							"sound/enemy/english/team/orders/checkpoint2"
+			CheckPoint3							"sound/enemy/english/team/orders/checkpoint3"
+			Compro								"sound/enemy/english/team/orders/compro"
+			ComputerRoom						"sound/enemy/english/team/orders/computer_room"
+			ControlRoom							"sound/enemy/english/team/orders/control_room"
+			East								"sound/enemy/english/team/orders/east"
+			EastWing							"sound/enemy/english/team/orders/east_wing"
+			ElevatorArea						"sound/enemy/english/team/orders/elevator_area"				
+			EngineRoom							"sound/enemy/english/team/orders/engine_room"				
+			Floor1								"sound/enemy/english/team/orders/floor1"				
+			Floor2								"sound/enemy/english/team/orders/floor2"				
+			Floor3								"sound/enemy/english/team/orders/floor3"				
+			Foyer								"sound/enemy/english/team/orders/foyer"				
+			Garage								"sound/enemy/english/team/orders/garage"	
+			Grounds								"sound/enemy/english/team/orders/grounds"						
+			HallNorth							"sound/enemy/english/team/orders/hall_north"						
+			HallSouth							"sound/enemy/english/team/orders/hall_south"
+			Holding								"sound/enemy/english/team/orders/holding"
+			Lab1								"sound/enemy/english/team/orders/lab1"						
+			Lab2								"sound/enemy/english/team/orders/lab2"						
+			Lab3								"sound/enemy/english/team/orders/lab3"	
+			North								"sound/enemy/english/team/orders/north"				
+			Sector1								"sound/enemy/english/team/orders/sector1"
+			Sector2								"sound/enemy/english/team/orders/sector2"
+			Sector3								"sound/enemy/english/team/orders/sector3"			
+			South								"sound/enemy/english/team/orders/south"
+			StairNorth							"sound/enemy/english/team/orders/stair_north"
+			StairSouth							"sound/enemy/english/team/orders/stair_south"
+			West								"sound/enemy/english/team/orders/west"
+			WestWing							"sound/enemy/english/team/orders/west_wing"	
+		}
+	}
+}
+
