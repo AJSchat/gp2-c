@@ -29,6 +29,12 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 #include "test.h"
 
 int main(int argc, char** argv){
+    // Print header.
+    Com_Printf("=========================\n");
+    Com_Printf("gp2-c - C test routines\n");
+    Com_Printf("Built on " __DATE__ "\n");
+    Com_Printf("=========================\n\n");
+
     // Initialize the memory zones.
     Com_Init(argv[0]);
 

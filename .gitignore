@@ -50,7 +50,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-/misc/linux/gp2-c/build/
-/misc/linux/gp2-c/dist/
-/misc/linux/gp2-cpp/build/
-/misc/linux/gp2-cpp/dist/
