@@ -50,7 +50,7 @@ endif
 CFLAGS=$(OPTIMIZE) -DARCH_STRING=\"$(COMPILE_ARCH)\" -DDEDICATED
 
 # Set linker flags.
-LDFLAGS="-lm"
+LDFLAGS=-lm
 
 # Set the mkdir command.
 MKDIR=mkdir
