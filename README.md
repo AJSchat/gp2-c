@@ -1,6 +1,4 @@
 # gpc-2
----
-
 gp2-c is a pure C implementation of Raven's Generic Parser 2, commonly referred
 to as GP2. Next to porting the core features, there have been some slight API
 changes in light of either security or unused functionality (i.e. variables
