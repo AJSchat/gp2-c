@@ -528,7 +528,10 @@ static void SortObject(
     *lastObject = object;
 }
 
+
+//=============================================
 // CGenericParser2 (void *) routines.
+//=============================================
 
 /*
 ==================
@@ -638,7 +641,9 @@ TGPGroup GP_GetBaseParseGroup(TGenericParser2 GP2)
     return &((CGenericParser2 *)GP2)->mTopLevel;
 }
 
+//=============================================
 // CGPGroup (void *) routines.
+//=============================================
 
 /*
 ==================
@@ -894,7 +899,9 @@ void GPG_FindPairValue(TGPGroup GPG, const char *key, const char *defaultVal, ch
     strncpy(dest, newVal, destSize);
 }
 
+//=============================================
 // CGPValue (void *) routines.
+//=============================================
 
 /*
 ==================
