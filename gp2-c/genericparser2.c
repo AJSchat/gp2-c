@@ -193,7 +193,7 @@ static void GPG_Clean(CGPGroup *gpg)
         gpg->mSubGroups = gpg->mCurrentSubGroup;
     }
 
-    if(gpg->mBase.mName != TOP_LEVEL_NAME){
+    if(gpg->mBase.mName != (void *)TOP_LEVEL_NAME){
         free(gpg);
     }
 }
