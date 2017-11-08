@@ -47,7 +47,7 @@ ifndef OUTPUT_CPP
 endif
 
 # Set C preprocessor definitions.
-CFLAGS=$(OPTIMIZE) -DARCH_STRING=\"$(COMPILE_ARCH)\" -DDEDICATED
+CFLAGS=$(OPTIMIZE) -Wall -DARCH_STRING=\"$(COMPILE_ARCH)\" -DDEDICATED
 
 # Set linker flags.
 LDFLAGS=-lm
@@ -98,7 +98,7 @@ all: gp2-test-c gp2-test-cpp
 
 $(ODIR)/c/%.o: %.c $(C_DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
-	
+
 $(ODIR)/cpp/%.o: %.cpp $(CPP_DEPS)
 	$(CXX) -c -o $@ $< $(CFLAGS)
 $(ODIR)/cpp/%.o: %.c $(CPP_DEPS)
@@ -131,4 +131,4 @@ clean:
 	rm -f $(ODIR)/c/qcommon/*.o *~ core $(INCDIR)/*~
 	rm -f $(ODIR)/cpp/*.o *~ core $(INCDIR)/*~
 	rm -f $(ODIR)/cpp/gp2-cpp/*.o *~ core $(INCDIR)/*~
-	rm -f $(ODIR)/cpp/qcommon/*.o *~ core $(INCDIR)/*~	
+	rm -f $(ODIR)/cpp/qcommon/*.o *~ core $(INCDIR)/*~

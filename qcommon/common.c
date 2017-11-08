@@ -48,15 +48,13 @@ A raw string should NEVER be passed as fmt, because of "%f" type crashers.
 void QDECL Com_Printf( const char *fmt, ... ) {
     va_list     argptr;
     char        msg[MAXPRINTMSG];
-  static qboolean opening_qconsole = qfalse;
-
 
     va_start (argptr,fmt);
     Q_vsnprintf (msg, sizeof(msg), fmt, argptr);
     va_end (argptr);
 
     // echo to dedicated console and early console
-    printf( msg );
+    printf( "%s", msg );
 }
 
 
