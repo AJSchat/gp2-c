@@ -873,6 +873,27 @@ extern  qboolean    com_fullyInitialized;
 extern  fileHandle_t    com_journalFile;
 extern  fileHandle_t    com_journalDataFile;
 
+
+/*
+==============================================================
+
+Zone and hunk memory
+
+==============================================================
+*/
+
+typedef enum {
+    TAG_FREE,
+    TAG_GENERAL,
+    TAG_BOTLIB,
+    TAG_RENDERER,
+    TAG_GHOUL2,
+    TAG_GP2,
+    TAG_TEXTPOOL,
+    TAG_SMALL,
+    TAG_STATIC
+} memtag_t;
+
 /*
 
 --- low memory ----

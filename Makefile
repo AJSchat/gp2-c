@@ -62,7 +62,6 @@ C_DEPS = gp2-c/genericparser2.h \
   qcommon/q_shared.h \
   qcommon/qcommon.h \
   qcommon/surfaceflags.h \
-  qcommon/tags.h \
   test.h
 
 _C_OBJ = c/gp2-c/genericparser2.o \
@@ -79,7 +78,6 @@ CPP_DEPS = gp2-cpp/genericparser2.h \
   qcommon/q_shared.h \
   qcommon/qcommon.h \
   qcommon/surfaceflags.h \
-  qcommon/tags.h \
   test.h
 
 _CPP_OBJ = cpp/gp2-cpp/genericparser2.o \
