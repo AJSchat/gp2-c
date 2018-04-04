@@ -20,6 +20,7 @@ Below is the new API for the C implementation of GP2:
 // CGenericParser2 (void *) routines.
 //=============================================
 TGenericParser2     GP_Parse                ( char **dataPtr );
+TGenericParser2     GP_ParseFile            ( char *fileName );
 void                GP_Clean                ( TGenericParser2 GP2 );
 void                GP_Delete               ( TGenericParser2 *GP2 );
 TGPGroup            GP_GetBaseParseGroup    ( TGenericParser2 GP2 );
@@ -58,6 +59,12 @@ writeable parameter is no longer present due to omitting the write GP2 routines.
 **GPV_GetTopValue**: The overloaded const char* routines were removed.
 The qboolean routines now expect a destination buffer size in the destSize
 parameter to avoid buffer overflows.
+
+The following routine was added:
+* **GP_ParseFile**: Even though not present in the original C++ implementation,
+this routine was added due to it also being present in the SoF2 codebase by
+Raven Software. Like GP_Parse, the cleanFirst and writeable parameters are
+omitted.
 
 ### Testing GP2
 Included in the repository are a set of test files. They can be tested by

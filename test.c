@@ -49,6 +49,38 @@ extern "C" {
 #define Test_GPG_FindPairValue(a,b,c,d,e)   GPG_FindPairValue(a,b,c,d)
 #define Test_GPV_GetName(a,b,c)             GPV_GetName(a,b)
 #define Test_GPV_GetTopValue(a,b,c)         GPV_GetTopValue(a,b)
+
+/*
+==================
+GP_ParseFile
+
+Fully parse the specified GP2 file.
+==================
+*/
+
+static TGenericParser2 GP_ParseFile(char *fileName)
+{
+    TGenericParser2 GP2;
+    char            *dataPtr;
+    union {
+        char    *c;
+        void    *v;
+    } buf;
+
+    // Read the specified GP2 file.
+    FS_ReadFile(fileName, &buf.v);
+    if(!buf.c){
+        return NULL;
+    }
+
+    // Parse the GP2 file.
+    dataPtr = buf.c;
+    GP2 = GP_Parse(&dataPtr, qtrue, qfalse);
+
+    // Clean up and return.
+    FS_FreeFile(buf.v);
+    return GP2;
+}
 #endif // not __cplusplus
 
 static char *readFile(const char *fileName)
@@ -78,24 +110,30 @@ static char *readFile(const char *fileName)
     return fileBuf;
 }
 
+long FS_ReadFile(const char *qpath, void **buffer)
+{
+    *buffer = readFile(qpath);
+
+    return 0;
+}
+
+void FS_FreeFile(void *buffer)
+{
+    free(buffer);
+}
+
+//=============================================
+
 void BG_ParseItemFile()
 {
     TGPGroup        baseGroup, subGroup;
     TGPValue        pairs;
     char            temp[1024];
     TGenericParser2 ItemFile;
-    char            *inputFile, *dataPtr;
 
     // Create the generic parser so the item file can be parsed.
-    inputFile = readFile("./testfiles/SOF2.item");
-    if(!inputFile){
-        return;
-    }
-    dataPtr = inputFile;
-
-    ItemFile = Test_GP_Parse(&dataPtr, qtrue, qfalse);
+    ItemFile = GP_ParseFile("./testfiles/SOF2.item");
     if(!ItemFile){
-        free(inputFile);
         return;
     }
 
@@ -152,7 +190,6 @@ void BG_ParseItemFile()
     }
 
     GP_Delete(&ItemFile);
-    free(inputFile);
 }
 
 void BG_ParseGametypeInfo()
@@ -161,19 +198,10 @@ void BG_ParseGametypeInfo()
     TGPGroup            topGroup;
     TGPGroup            gtGroup;
     char                temp[1024];
-    char                *inputFile, *dataPtr;
 
     // Create the generic parser so the item file can be parsed.
-    inputFile = readFile("./testfiles/ctf.gametype");
-    if(!inputFile){
-        return;
-    }
-    dataPtr = inputFile;
-
-    // Open the gametype's script file.
-    GP2 = Test_GP_Parse(&dataPtr, qtrue, qfalse);
+    GP2 = GP_ParseFile("./testfiles/ctf.gametype");
     if(!GP2){
-        free(inputFile);
         return;
     }
 
@@ -184,7 +212,6 @@ void BG_ParseGametypeInfo()
     if(!topGroup){
         Com_Printf("No gametype sub group (1)!\n");
         GP_Delete(&GP2);
-        free(inputFile);
         return;
     }
 
@@ -193,7 +220,6 @@ void BG_ParseGametypeInfo()
     if(!gtGroup){
         Com_Printf("No gametype sub group (2)!");
         GP_Delete(&GP2);
-        free(inputFile);
         return;
     }
 
@@ -202,7 +228,6 @@ void BG_ParseGametypeInfo()
     if(!temp[0]){
         Com_Printf("No display name!\n");
         GP_Delete(&GP2);
-        free(inputFile);
         return;
     }
     Com_Printf("Display name: %s\n", temp);
@@ -237,9 +262,6 @@ void BG_ParseGametypeInfo()
 
     // Cleanup the generic parser.
     GP_Delete(&GP2);
-
-    // Free memory allocated for the input file.
-    free(inputFile);
 }
 
 void BG_ParseNPCFile()
@@ -247,20 +269,11 @@ void BG_ParseNPCFile()
     TGenericParser2     NPCFile;
     TGPGroup            baseGroup, subGroup, soundsGroup, pairs;
     TGPValue            list;
-    char                *inputFile, *dataPtr;
     char                temp[1024];
 
     // Create the generic parser so the item file can be parsed.
-    inputFile = readFile("./testfiles/Base.npc");
-    if(!inputFile){
-        return;
-    }
-    dataPtr = inputFile;
-
-    // Open the NPC file.
-    NPCFile = Test_GP_Parse(&dataPtr, qtrue, qfalse);
+    NPCFile = GP_ParseFile("./testfiles/Base.npc");
     if(!NPCFile){
-        free(inputFile);
         return;
     }
 
@@ -319,7 +332,4 @@ void BG_ParseNPCFile()
 
     // Cleanup the generic parser.
     GP_Delete(&NPCFile);
-
-    // Free memory allocated for the input file.
-    free(inputFile);
 }

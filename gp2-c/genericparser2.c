@@ -580,6 +580,38 @@ TGenericParser2 GP_Parse(char **dataPtr)
 
 /*
 ==================
+GP_ParseFile
+
+Fully parse the specified GP2 file.
+==================
+*/
+
+TGenericParser2 GP_ParseFile(char *fileName)
+{
+    TGenericParser2 GP2;
+    char            *dataPtr;
+    union {
+        char    *c;
+        void    *v;
+    } buf;
+
+    // Read the specified GP2 file.
+    FS_ReadFile(fileName, &buf.v);
+    if(!buf.c){
+        return NULL;
+    }
+
+    // Parse the GP2 file.
+    dataPtr = buf.c;
+    GP2 = GP_Parse(&dataPtr);
+
+    // Clean up and return.
+    FS_FreeFile(buf.v);
+    return GP2;
+}
+
+/*
+==================
 GP_Clean
 
 Cleans GP2 instance.
