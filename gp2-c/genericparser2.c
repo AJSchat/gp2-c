@@ -43,7 +43,6 @@ static char         *GetToken               ( char **text, qboolean allowLineBre
 static void         SortObject              ( void *object, void **unsortedList, void **sortedList, void **lastObject );
 
 // Local variable definitions.
-static char         token[MAX_TOKEN_SIZE];
 static const char   *topLevelName           = TOP_LEVEL_NAME;
 
 /*
@@ -370,6 +369,7 @@ Parses token from the text buffer. The result is stored in the local
 
 static char *GetToken(char **text, qboolean allowLineBreaks, qboolean readUntilEOL)
 {
+    static char token[MAX_TOKEN_SIZE];
     char        *pointer = *text;
     int         length = 0;
     int         c = 0;
