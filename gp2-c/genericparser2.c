@@ -471,7 +471,7 @@ static char *GetToken(char **text, qboolean allowLineBreaks, qboolean readUntilE
     if(token[0] == '\"'){
         // Remove start quote.
         length--;
-        memmove(token, token+1, length);
+        memmove(token, token + 1, sizeof(token) - 1);
 
         if(length && token[length-1] == '\"'){
             // Remove end quote.
