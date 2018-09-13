@@ -586,7 +586,7 @@ Fully parse the specified GP2 file.
 ==================
 */
 
-TGenericParser2 GP_ParseFile(char *fileName)
+TGenericParser2 GP_ParseFile(const char *fileName)
 {
     TGenericParser2 GP2;
     char            *dataPtr;
