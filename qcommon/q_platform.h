@@ -1,14 +1,13 @@
 /*
 ===========================================================================
-Copyright (C) 2000 - 2013, Raven Software, Inc.
-Copyright (C) 2001 - 2013, Activision, Inc.
-Copyright (C) 2013 - 2015, OpenJK contributors
-Copyright (C) 2017, Ane-Jouke Schat
+Copyright (C) 1999 - 2005, Id Software, Inc.
+Copyright (C) 2005 - 2018, ioquake3 contributors
+Copyright (C) 2017 - 2018, Ane-Jouke Schat
 
 This file is part of the gp2-c source code.
 
 This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License version 3 as
+under the terms of the GNU General Public License version 2 as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,

@@ -98,5 +98,5 @@ $ make gp2-test-cpp
 ```
 
 ### License
-gp2-c is licensed under the GNU General Public License v3.0. You can find a
+gp2-c is licensed under the GNU General Public License v2.0. You can find a
 copy of the license in the LICENSE.md file in the repository root.
